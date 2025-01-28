@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration, withEventReplay } from '@angular/platform-browser';
 
+import { FormsModule } from "@angular/forms";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/shared/header/header.component';
 import { PokemonListComponent } from './components/pokemon-list/pokemon-list/pokemon-list.component';
 import { SearchBarComponent } from './components/pokemon-list/search-bar/search-bar.component';
+import { HeaderComponent } from './components/shared/header/header.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { SearchBarComponent } from './components/pokemon-list/search-bar/search-
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [
     provideClientHydration(withEventReplay())
