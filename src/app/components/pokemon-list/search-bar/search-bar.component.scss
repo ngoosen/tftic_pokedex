@@ -1,0 +1,44 @@
+section {
+  width: 90%;
+
+  margin: 20px auto;
+  padding: 20px 30px;
+
+  border-radius: 10px;
+  background-color: rgb(247, 227, 224);
+
+  article {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    margin: 20px 0;
+
+    input {
+      flex: 1;
+
+      padding: 4px 6px;
+
+      border: 1px solid #cc0000;
+      border-radius: 5px;
+
+      &:active,
+      &:focus {
+        outline: 1px solid #cc0000;
+      }
+    }
+
+    button {
+      appearance: none;
+      border: none;
+
+      padding: 5px 15px;
+
+      color: #ffffff;
+
+      border-radius: 5px;
+      background-color: #cc0000;
+    }
+  }
+}
