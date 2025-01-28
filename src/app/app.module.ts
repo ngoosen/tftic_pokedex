@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { PokemonListComponent } from './components/pokemon-list/pokemon-list/pokemon-list.component';
 import { SearchBarComponent } from './components/pokemon-list/search-bar/search-bar.component';
 import { HeaderComponent } from './components/shared/header/header.component';
+import { PokemonListItemComponent } from './components/pokemon-list/pokemon-list-item/pokemon-list-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     PokemonListComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    PokemonListItemComponent
   ],
   imports: [
     BrowserModule,

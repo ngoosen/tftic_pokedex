@@ -3,7 +3,10 @@
 @if (pokemonNamesList.length > 0) {
   <ul>
     @for (pokemon of pokemonNamesList; track $index) {
-      <li>{{pokemon.name}}</li>
+      <app-pokemon-list-item
+        [pokemon]="pokemon"
+      >
+      </app-pokemon-list-item>
     }
   </ul>
 }

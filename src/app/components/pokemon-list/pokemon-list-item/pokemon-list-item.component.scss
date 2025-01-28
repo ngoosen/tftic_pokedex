@@ -1,0 +1,31 @@
+li {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  min-height: 100px;
+
+  border-radius: 5px;
+
+  background-color: #e6e6e6;
+
+  overflow: hidden;
+
+  .name {
+    width: 100%;
+
+    padding: 6px;
+
+    background-color: #cc0000;
+
+    p {
+      text-align: center;
+      color: #ffffff;
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
