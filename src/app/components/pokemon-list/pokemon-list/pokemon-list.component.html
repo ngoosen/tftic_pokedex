@@ -1,1 +1,12 @@
 <app-search-bar></app-search-bar>
+
+@if (pokemonNamesList.length > 0) {
+  <ul>
+    @for (pokemon of pokemonNamesList; track $index) {
+      <li>{{pokemon.name}}</li>
+    }
+  </ul>
+}
+@else {
+  <p>Aucun Pokémon.</p>
+}
