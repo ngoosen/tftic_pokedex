@@ -1,20 +1,33 @@
 <section>
-  <button (click)="getFirstPage()">
-    <lucide-angular name="chevrons-left" size="18" class="chevron"></lucide-angular>
-  </button>
-  <button (click)="getPreviousPage()">
-    <lucide-angular name="chevron-left" size="18" class="chevron"></lucide-angular>
-  </button>
-  <button class="current" disabled>1</button>
-  <button (click)="getPage(2)">2</button>
-  <button (click)="getPage(3)">3</button>
-  <button (click)="getPage(4)">4</button>
-  <button (click)="getPage(5)">5</button>
-  <button>...</button>
-  <button (click)="getNextPage()">
-    <lucide-angular name="chevron-right" size="18" class="chevron"></lucide-angular>
-  </button>
-  <button (click)="getLastPage()">
-    <lucide-angular name="chevrons-right" size="18" class="chevron"></lucide-angular>
-  </button>
+  <div class="nav_left">
+    @if (currentPage > 1) {
+      <button (click)="getFirstPage()">
+        <lucide-angular name="chevrons-left" size="18" class="chevron"></lucide-angular>
+      </button>
+      <button (click)="getPreviousPage()">
+        <lucide-angular name="chevron-left" size="18" class="chevron"></lucide-angular>
+      </button>
+    }
+  </div>
+
+  <div class="pages">
+    @for (page of currentPages; track $index) {
+      <button [ngClass]="{ 'current': currentPage === page }" [disabled]="currentPage === page" (click)="getPage(page)">
+        {{page}}
+      </button>
+    }
+
+    <button>...</button>
+  </div>
+
+  @if (currentPage < totalPages) {
+    <div class="nav_right">
+      <button (click)="getNextPage()">
+        <lucide-angular name="chevron-right" size="18" class="chevron"></lucide-angular>
+      </button>
+      <button (click)="getLastPage()">
+        <lucide-angular name="chevrons-right" size="18" class="chevron"></lucide-angular>
+      </button>
+    </div>
+  }
 </section>

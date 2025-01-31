@@ -13,11 +13,12 @@ import { PokemonDataService } from '../../../tools/services/pokemon-data.service
 export class PaginationComponent {
   @Output() onChangePage: EventEmitter<PokemonUrl[]>;
 
-  private _totalPages: number = 0;
   private _previousPage: string |null = null;
   private _nextPage: string | null = null;
 
+  totalPages: number = 1;
   currentPage: number = 1;
+  currentPages: number[] = [1, 2, 3, 4, 5];
 
   constructor(private _pokeService: PokemonDataService) {
     this.onChangePage = new EventEmitter<PokemonUrl[]>();
@@ -32,7 +33,7 @@ export class PaginationComponent {
   ngOnInit() {
     this._pokeService.getAll().subscribe({
       next: (data) => {
-        this._totalPages = Math.ceil(data.count / this._pokeService.LIMIT);
+        this.totalPages = Math.ceil(data.count / this._pokeService.LIMIT);
         this._updateMetaData(data);
       },
       error: (error) => console.log(error),
@@ -43,7 +44,7 @@ export class PaginationComponent {
     if (this._nextPage) {
       this._pokeService.getAll(this._nextPage).subscribe({
         next: (data) => {
-          console.log("🚀 ~ PaginationComponent ~ this._pokeService.getAll ~ data:", data);
+          this.currentPage++;
           this._updateMetaData(data);
         },
         error: (err) => console.log(err),
@@ -55,7 +56,7 @@ export class PaginationComponent {
     if (this._previousPage) {
       this._pokeService.getAll(this._previousPage).subscribe({
         next: (data) => {
-          console.log("🚀 ~ PaginationComponent ~ this._pokeService.getAll ~ data:", data);
+          this.currentPage--;
           this._updateMetaData(data);
         },
         error: (err) => console.log(err),
@@ -66,7 +67,7 @@ export class PaginationComponent {
   getFirstPage() {
     this._pokeService.getAllFirstPage().subscribe({
       next: (data) => {
-        console.log("🚀 ~ PaginationComponent ~ this._pokeService.getAllFirstPage ~ data:", data);
+        this.currentPage = 1;
         this._updateMetaData(data);
       },
       error: (error) => console.log(error),
@@ -74,9 +75,9 @@ export class PaginationComponent {
   }
 
   getLastPage() {
-    this._pokeService.getAllLastPage(this._totalPages).subscribe({
+    this._pokeService.getAllLastPage(this.totalPages).subscribe({
       next: (data) => {
-        console.log("🚀 ~ PaginationComponent ~ this._pokeService.getAllLastPage ~ data:", data);
+        this.currentPage = this.totalPages;
         this._updateMetaData(data);
       },
       error: (error) => console.log(error),
@@ -86,7 +87,7 @@ export class PaginationComponent {
   getPage(pageNb: number) {
     this._pokeService.getAllPage(pageNb).subscribe({
       next: (data) => {
-        console.log("🚀 ~ PaginationComponent ~ this._pokeService.getAllPage ~ data:", data);
+        this.currentPage = pageNb;
         this._updateMetaData(data);
       },
       error: (error) => console.log(error),

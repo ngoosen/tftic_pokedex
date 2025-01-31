@@ -1,56 +1,76 @@
+$button_size: 45px;
+$gap: 5px;
+
 section {
   display: flex;
   justify-content: center;
-  align-items: center;
-  gap: 5px;
 
   width: 90%;
 
   margin: 30px auto;
 
-  button {
-    appearance: none;
-    border: none;
-
+  div {
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: $gap;
 
-    width: 45px;
-    height: 45px;
+    button {
+      appearance: none;
+      border: none;
 
-    font-size: 18px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
-    border-radius: 100%;
-    background-color: transparent;
+      width: $button_size;
+      height: $button_size;
 
-    &:hover {
-      cursor: pointer;
+      font-size: 18px;
 
-      font-weight: bold;
+      border-radius: 100%;
+      background-color: transparent;
 
-      color: #ffffff;
-      background-color: #cf4141;
-      box-shadow: 0 0 10px 0 #8b4040;
+      &:hover {
+        cursor: pointer;
+
+        font-weight: bold;
+
+        color: #ffffff;
+        background-color: #cf4141;
+        box-shadow: 0 0 10px 0 #8b4040;
+      }
+
+        .chevron {
+          margin-top: 5px;
+      }
     }
 
-    .chevron {
-      margin-top: 5px;
+    .current {
+      text-decoration: underline;
+      color: #cf4141;
+
+      &:hover {
+        cursor: default;
+
+        font-weight: normal;
+
+        color: #cf4141;
+        background-color: transparent;
+        box-shadow: none;
+      }
     }
   }
 
-  .current {
-    text-decoration: underline;
-    color: #cf4141;
+  .nav_left {
+    width: calc(2 * $button_size + $gap);
+  }
 
-    &:hover {
-      cursor: default;
+  .pages {
+    width: calc((6 * $button_size) + (5 * $gap));
+  }
 
-      font-weight: normal;
-
-      color: #cf4141;
-      background-color: transparent;
-      box-shadow: none;
-    }
+  .nav_right {
+    width: calc(2 * $button_size + $gap);
   }
 }
