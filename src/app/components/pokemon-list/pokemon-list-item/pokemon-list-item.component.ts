@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { PokemonUrl } from '../../../models/pokemonUrl.model';
 
 @Component({
@@ -11,11 +12,10 @@ import { PokemonUrl } from '../../../models/pokemonUrl.model';
 export class PokemonListItemComponent {
   @Input() pokemon!: PokemonUrl;
 
-  pokemonId!: string;
+  constructor(private _router: Router) { }
 
-  ngOnInit() {
-    if (this.pokemon) {
-      this.pokemonId = this.pokemon.url.split("/").slice(-2)[0];
-    }
+  goToPokemonPage(url: string) {
+    const pokemonId = url.split("/").slice(-2)[0];
+    this._router.navigate(["/pokemon", pokemonId]);
   }
 }
