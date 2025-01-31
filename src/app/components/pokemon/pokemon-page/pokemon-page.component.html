@@ -1,4 +1,7 @@
-@if (!pokemon) {
+@if (pageIsLoading) {
+  <app-loading></app-loading>
+}
+@else if (!pokemon) {
   <div class="not_found">
     <h1>Pokémon introuvable!</h1>
 

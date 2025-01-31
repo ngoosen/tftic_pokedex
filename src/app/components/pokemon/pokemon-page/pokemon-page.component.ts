@@ -14,6 +14,8 @@ export class PokemonPageComponent {
   pokemon!: Pokemon;
   pokemonImgSrc: string = "";
 
+  pageIsLoading: boolean = true;
+
   constructor (private _activatedRoute: ActivatedRoute, private _pokeService: PokemonDataService) { }
 
   ngOnInit() {
@@ -23,8 +25,12 @@ export class PokemonPageComponent {
       next: (data) => {
         this.pokemon = data;
         this.pokemonImgSrc = data.sprites.other['official-artwork'].front_default;
+        this.pageIsLoading = false;
       },
-      error: (e) => console.log(e),
+      error: (e) => {
+        console.log(e);
+        this.pageIsLoading = false;
+      },
     });
   }
 }

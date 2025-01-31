@@ -12,6 +12,7 @@ import { PokemonListComponent } from './components/pokemon-list/pokemon-list/pok
 import { SearchBarComponent } from './components/pokemon-list/search-bar/search-bar.component';
 import { HeaderComponent } from './components/shared/header/header.component';
 import { PokemonPageComponent } from './components/pokemon/pokemon-page/pokemon-page.component';
+import { LoadingComponent } from './components/shared/ui/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { PokemonPageComponent } from './components/pokemon/pokemon-page/pokemon-
     SearchBarComponent,
     PokemonListItemComponent,
     PaginationComponent,
-    PokemonPageComponent
+    PokemonPageComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
