@@ -113,10 +113,26 @@ export class PaginationComponent {
   }
 
   showPagesLeft() {
-    console.log("left");
+    const newPages : number[] = [];
+
+    for (let i = this.currentPages[0] - 1; i > this.currentPages[0] - 6; i--) {
+      if (i > 0) {
+        newPages.push(i);
+      }
+    }
+
+    this.currentPages = newPages.reverse();
   }
 
   showPagesRight() {
-    console.log("right");
+    const newPages : number[] = [];
+
+    for (let i = this.currentPages.slice(-1)[0] + 1; i < this.currentPages.slice(-1)[0] + 6; i++) {
+      if (i > 0 && i <= this.totalPages) {
+        newPages.push(i);
+      }
+    }
+
+    this.currentPages = newPages;
   }
 }
