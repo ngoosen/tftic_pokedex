@@ -7,14 +7,28 @@ import { PaginatedPokemonData } from '../../models/paginatedPokemonData.model';
   providedIn: 'root'
 })
 export class PokemonDataService {
-  private _baseUrl = "https://pokeapi.co/api/v2/pokemon";
-
-  offset: number = 0;
   LIMIT: number = 21;
+
+  private _baseUrl = "https://pokeapi.co/api/v2/pokemon";
+  private _defaultUrl = "https://pokeapi.co/api/v2/pokemon?offset=0&limit=" + this.LIMIT;
 
   constructor(private _httpClient: HttpClient) { }
 
-  getAll(): Observable<PaginatedPokemonData> {
-    return this._httpClient.get<PaginatedPokemonData>(`${this._baseUrl}?offset=${this.offset}&limit=${this.LIMIT}`);
+  getAll(url = this._defaultUrl): Observable<PaginatedPokemonData> {
+    return this._httpClient.get<PaginatedPokemonData>(url);
+  }
+
+  getAllFirstPage(): Observable<PaginatedPokemonData> {
+    return this._httpClient.get<PaginatedPokemonData>(this._defaultUrl);
+  }
+
+  getAllLastPage(totalPages : number): Observable<PaginatedPokemonData> {
+    return this._httpClient.get<PaginatedPokemonData>(`${this._baseUrl}?offset=${(totalPages - 1) * this.LIMIT}&limit=${this.LIMIT}`);
+  }
+
+  getAllPage(pageNb: number): Observable<PaginatedPokemonData> {
+    const offset = pageNb === 1 ? 0 : (pageNb - 1) * this.LIMIT;
+
+    return this._httpClient.get<PaginatedPokemonData>(`${this._baseUrl}?offset=${offset}&limit=${this.LIMIT}`);
   }
 }

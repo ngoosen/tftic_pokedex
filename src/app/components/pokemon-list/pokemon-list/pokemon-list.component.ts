@@ -17,7 +17,7 @@ export class PokemonListComponent {
   ngOnInit() {
     this._pokeService.getAll().subscribe({
       next: (data) => {
-        console.log(data);
+        // console.log(data);
         this.pokemonNamesList = data.results
       },
       error: (error) => {

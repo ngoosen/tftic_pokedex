@@ -1,17 +1,17 @@
 <section>
-  <button>
+  <button (click)="getFirstPage()">
     <lucide-angular name="chevrons-left" size="18" class="chevron"></lucide-angular>
   </button>
-  <button>
+  <button (click)="getPreviousPage()">
     <lucide-angular name="chevron-left" size="18" class="chevron"></lucide-angular>
   </button>
   <button class="current" disabled>1</button>
-  <button>2</button>
-  <button>3</button>
-  <button>4</button>
-  <button>5</button>
+  <button (click)="getPage(2)">2</button>
+  <button (click)="getPage(3)">3</button>
+  <button (click)="getPage(4)">4</button>
+  <button (click)="getPage(5)">5</button>
   <button>...</button>
-  <button>
+  <button (click)="getNextPage()">
     <lucide-angular name="chevron-right" size="18" class="chevron"></lucide-angular>
   </button>
   <button (click)="getLastPage()">
