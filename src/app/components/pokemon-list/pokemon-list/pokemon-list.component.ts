@@ -29,4 +29,8 @@ export class PokemonListComponent {
   updateList(newList: PokemonUrl[]) {
     this.pokemonNamesList = newList;
   }
+
+  searchPokemon(pokemonName: string) {
+    //
+  }
 }

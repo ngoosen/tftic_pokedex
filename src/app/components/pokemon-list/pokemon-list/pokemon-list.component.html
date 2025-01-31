@@ -1,4 +1,4 @@
-<app-search-bar></app-search-bar>
+<app-search-bar (onSearch)="searchPokemon($event)"></app-search-bar>
 
 @if (pokemonNamesList.length > 0) {
   <ul>
