@@ -12,12 +12,17 @@ import { PokemonDataService } from '../../../tools/services/pokemon-data.service
 export class PokemonListComponent {
   pokemonNamesList: PokemonUrl[] = [];
 
-  constructor (private _pokeService: PokemonDataService) {
-    // _pokeService.getAll();
-    this.getData();
-  }
+  constructor (private _pokeService: PokemonDataService) { }
 
-  async getData() {
-    this.pokemonNamesList = await this._pokeService.getAll();
+  ngOnInit() {
+    this._pokeService.getAll().subscribe({
+      next: (data) => {
+        console.log(data);
+        this.pokemonNamesList = data.results
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    });
   }
 }

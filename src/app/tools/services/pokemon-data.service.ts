@@ -1,29 +1,20 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { PokemonUrl } from '../../models/pokemonUrl.model';
+import { Observable } from 'rxjs';
+import { PaginatedPokemonData } from '../../models/paginatedPokemonData.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PokemonDataService {
-  pokemonUrlList : PokemonUrl[] = [];
+  private _baseUrl = "https://pokeapi.co/api/v2/pokemon";
 
   offset: number = 0;
   LIMIT: number = 20;
 
-  constructor() { }
+  constructor(private _httpClient: HttpClient) { }
 
-  async getAll() {
-    const baseUrl = "https://pokeapi.co/api/v2/pokemon";
-
-    try {
-      const response = await fetch(`${baseUrl}?offset=${this.offset}&limit=${this.LIMIT}`);
-      const data = await response.json();
-
-      this.pokemonUrlList = data.results;
-    } catch (e) {
-      console.log(e);
-    } finally {
-      return this.pokemonUrlList;
-    }
+  getAll(): Observable<PaginatedPokemonData> {
+    return this._httpClient.get<PaginatedPokemonData>(this._baseUrl);
   }
 }
