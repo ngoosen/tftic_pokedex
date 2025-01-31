@@ -15,6 +15,6 @@ export class PokemonDataService {
   constructor(private _httpClient: HttpClient) { }
 
   getAll(): Observable<PaginatedPokemonData> {
-    return this._httpClient.get<PaginatedPokemonData>(this._baseUrl);
+    return this._httpClient.get<PaginatedPokemonData>(`${this._baseUrl}?offset=${this.offset}&limit=${this.LIMIT}`);
   }
 }
