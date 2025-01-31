@@ -1,0 +1,27 @@
+@if (!pokemon) {
+  <div class="not_found">
+    <h1>Pokémon introuvable!</h1>
+
+    <button>
+      <a routerLink="">Revenir à la liste</a>
+    </button>
+  </div>
+}
+@else {
+  <main>
+    <section>
+      <article>
+        <img [src]="pokemonImgSrc" [alt]="pokemon.name" />
+      </article>
+      <article>
+        <h1>{{ pokemon.name | titlecase }}</h1>
+
+        <ul>
+          @for (type of pokemon.types; track $index) {
+            <li [ngClass]="type.type.name">{{ type.type.name | uppercase }}</li>
+          }
+        </ul>
+      </article>
+    </section>
+  </main>
+}

@@ -1,6 +1,8 @@
 <li>
-  <div></div>
-  <div class="name">
-    <p>{{ pokemon.name | titlecase }}</p>
-  </div>
+  <a [routerLink]="'pokemon/' + pokemonId">
+    <div></div>
+    <div class="name">
+      <p>{{ pokemon.name | titlecase }}</p>
+    </div>
+  </a>
 </li>

@@ -10,4 +10,12 @@ import { PokemonUrl } from '../../../models/pokemonUrl.model';
 })
 export class PokemonListItemComponent {
   @Input() pokemon!: PokemonUrl;
+
+  pokemonId!: string;
+
+  ngOnInit() {
+    if (this.pokemon) {
+      this.pokemonId = this.pokemon.url.split("/").slice(-2)[0];
+    }
+  }
 }
