@@ -11,13 +11,15 @@
   </div>
 
   <div class="pages">
+    <button (click)="showPagesLeft()" [ngClass]="{ 'disabled' : currentPage < 3}" [disabled]="currentPage < 3">{{currentPage < 3 ? "" : "..."}}</button>
+
     @for (page of currentPages; track $index) {
       <button [ngClass]="{ 'current': currentPage === page }" [disabled]="currentPage === page" (click)="getPage(page)">
         {{page}}
       </button>
     }
 
-    <button>...</button>
+    <button (click)="showPagesRight()" [ngClass]="{ 'disabled' : currentPage > totalPages - 2}" [disabled]="currentPage > totalPages - 2">{{currentPage > totalPages - 2 ? "" : "..."}}</button>
   </div>
 
   @if (currentPage < totalPages) {

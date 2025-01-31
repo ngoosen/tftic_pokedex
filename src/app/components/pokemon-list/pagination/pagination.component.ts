@@ -111,4 +111,12 @@ export class PaginationComponent {
       error: (error) => console.log(error),
     });
   }
+
+  showPagesLeft() {
+    console.log("left");
+  }
+
+  showPagesRight() {
+    console.log("right");
+  }
 }

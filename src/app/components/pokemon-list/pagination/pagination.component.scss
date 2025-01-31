@@ -60,6 +60,12 @@ section {
         box-shadow: none;
       }
     }
+
+    .disabled:hover {
+      cursor: default;
+      background-color: transparent;
+      box-shadow: none;
+    }
   }
 
   .nav_left {
@@ -67,7 +73,7 @@ section {
   }
 
   .pages {
-    width: calc((6 * $button_size) + (5 * $gap));
+    width: calc((7 * $button_size) + (6 * $gap));
   }
 
   .nav_right {
