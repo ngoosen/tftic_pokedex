@@ -12,6 +12,10 @@ section {
     appearance: none;
     border: none;
 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     width: 45px;
     height: 45px;
 
@@ -28,6 +32,10 @@ section {
       color: #ffffff;
       background-color: #cf4141;
       box-shadow: 0 0 10px 0 #8b4040;
+    }
+
+    .chevron {
+      margin-top: 5px;
     }
   }
 }

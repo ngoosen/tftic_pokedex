@@ -3,13 +3,14 @@ import { BrowserModule, provideClientHydration, withEventReplay } from '@angular
 
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { FormsModule } from "@angular/forms";
+import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, LucideAngularModule } from "lucide-angular";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { PaginationComponent } from './components/pokemon-list/pagination/pagination.component';
 import { PokemonListItemComponent } from './components/pokemon-list/pokemon-list-item/pokemon-list-item.component';
 import { PokemonListComponent } from './components/pokemon-list/pokemon-list/pokemon-list.component';
 import { SearchBarComponent } from './components/pokemon-list/search-bar/search-bar.component';
 import { HeaderComponent } from './components/shared/header/header.component';
-import { PaginationComponent } from './components/pokemon-list/pagination/pagination.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,13 @@ import { PaginationComponent } from './components/pokemon-list/pagination/pagina
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    LucideAngularModule.pick({
+      ChevronLeft,
+      ChevronRight,
+      ChevronsLeft,
+      ChevronsRight,
+    }),
   ],
   providers: [
     provideClientHydration(withEventReplay()),
