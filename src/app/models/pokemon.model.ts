@@ -18,6 +18,8 @@ export interface Pokemon {
     move: PokemonUrl
   }[];
 
+  species: PokemonUrl;
+
   sprites: {
     other: {
       "official-artwork": {

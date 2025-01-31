@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { PaginatedPokemonData } from '../../models/paginatedPokemonData.model';
+import { Pokemon } from '../../models/pokemon.model';
 
 @Injectable({
   providedIn: 'root'
@@ -30,5 +31,13 @@ export class PokemonDataService {
   getAllPage(pageNb: number): Observable<PaginatedPokemonData> {
     const offset = pageNb === 1 ? 0 : (pageNb - 1) * this.LIMIT;
     return this._httpClient.get<PaginatedPokemonData>(`${this._baseUrl}?offset=${offset}&limit=${this.LIMIT}`);
+  }
+
+  getById(id: number): Observable<Pokemon> {
+    return this._httpClient.get<Pokemon>(`${this._baseUrl}/${id}`)
+  }
+
+  getByName(name: string): Observable<Pokemon> {
+    return this._httpClient.get<Pokemon>(`${this._baseUrl}/${name}`)
   }
 }
