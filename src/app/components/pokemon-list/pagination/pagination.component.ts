@@ -28,6 +28,24 @@ export class PaginationComponent {
     this._previousPage = data.previous;
     this._nextPage = data.next;
     this.onChangePage.emit(data.results);
+
+    const newPages: number[] = [];
+
+    if (this.currentPage > 3) {
+      for (let i = this.currentPage - 2; i <= this.currentPage + 2; i++) {
+        if (i <= this.totalPages) {
+          newPages.push(i);
+        }
+      }
+    } else {
+      for (let i = 1; i <= 5; i++) {
+        if (i <= this.totalPages) {
+          newPages.push(i);
+        }
+      }
+    }
+
+    this.currentPages = newPages;
   }
 
   ngOnInit() {
