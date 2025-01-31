@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { PaginatedPokemonData } from '../../../models/paginatedPokemonData.model';
+import { PokemonUrl } from '../../../models/pokemonUrl.model';
 import { PokemonDataService } from '../../../tools/services/pokemon-data.service';
 
 @Component({
@@ -10,17 +11,22 @@ import { PokemonDataService } from '../../../tools/services/pokemon-data.service
   styleUrl: './pagination.component.scss'
 })
 export class PaginationComponent {
+  @Output() onChangePage: EventEmitter<PokemonUrl[]>;
+
   private _totalPages: number = 0;
   private _previousPage: string |null = null;
   private _nextPage: string | null = null;
 
   currentPage: number = 1;
 
-  constructor(private _pokeService: PokemonDataService) { }
+  constructor(private _pokeService: PokemonDataService) {
+    this.onChangePage = new EventEmitter<PokemonUrl[]>();
+  }
 
   private _updateMetaData(data: PaginatedPokemonData) {
     this._previousPage = data.previous;
     this._nextPage = data.next;
+    this.onChangePage.emit(data.results);
   }
 
   ngOnInit() {
