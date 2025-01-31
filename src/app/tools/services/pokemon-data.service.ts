@@ -15,7 +15,8 @@ export class PokemonDataService {
   constructor(private _httpClient: HttpClient) { }
 
   getAll(url = this._defaultUrl): Observable<PaginatedPokemonData> {
-    return this._httpClient.get<PaginatedPokemonData>(url);
+    const limitlessUrl = url.split("limit=")[0];
+    return this._httpClient.get<PaginatedPokemonData>(`${limitlessUrl}limit=${this.LIMIT}`);
   }
 
   getAllFirstPage(): Observable<PaginatedPokemonData> {
@@ -28,7 +29,6 @@ export class PokemonDataService {
 
   getAllPage(pageNb: number): Observable<PaginatedPokemonData> {
     const offset = pageNb === 1 ? 0 : (pageNb - 1) * this.LIMIT;
-
     return this._httpClient.get<PaginatedPokemonData>(`${this._baseUrl}?offset=${offset}&limit=${this.LIMIT}`);
   }
 }
