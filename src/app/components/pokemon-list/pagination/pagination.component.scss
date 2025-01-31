@@ -38,4 +38,19 @@ section {
       margin-top: 5px;
     }
   }
+
+  .current {
+    text-decoration: underline;
+    color: #cf4141;
+
+    &:hover {
+      cursor: default;
+
+      font-weight: normal;
+
+      color: #cf4141;
+      background-color: transparent;
+      box-shadow: none;
+    }
+  }
 }

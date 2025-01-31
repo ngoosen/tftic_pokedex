@@ -5,7 +5,7 @@
   <button>
     <lucide-angular name="chevron-left" size="18" class="chevron"></lucide-angular>
   </button>
-  <button>1</button>
+  <button class="current" disabled>1</button>
   <button>2</button>
   <button>3</button>
   <button>4</button>
@@ -14,7 +14,7 @@
   <button>
     <lucide-angular name="chevron-right" size="18" class="chevron"></lucide-angular>
   </button>
-  <button>
+  <button (click)="getLastPage()">
     <lucide-angular name="chevrons-right" size="18" class="chevron"></lucide-angular>
   </button>
 </section>
