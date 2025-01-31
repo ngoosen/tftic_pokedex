@@ -10,7 +10,7 @@ export class PokemonDataService {
   private _baseUrl = "https://pokeapi.co/api/v2/pokemon";
 
   offset: number = 0;
-  LIMIT: number = 20;
+  LIMIT: number = 21;
 
   constructor(private _httpClient: HttpClient) { }
 

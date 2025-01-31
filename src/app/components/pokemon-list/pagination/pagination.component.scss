@@ -1,0 +1,33 @@
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+
+  width: 90%;
+
+  margin: 30px auto;
+
+  button {
+    appearance: none;
+    border: none;
+
+    width: 45px;
+    height: 45px;
+
+    font-size: 18px;
+
+    border-radius: 100%;
+    background-color: transparent;
+
+    &:hover {
+      cursor: pointer;
+
+      font-weight: bold;
+
+      color: #ffffff;
+      background-color: #cf4141;
+      box-shadow: 0 0 10px 0 #8b4040;
+    }
+  }
+}
