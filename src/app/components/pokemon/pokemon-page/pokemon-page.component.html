@@ -23,7 +23,7 @@
           <h1>{{ pokemon.name | titlecase }}</h1>
           <ul class="types">
             @for (type of pokemon.types; track $index) {
-              <li [ngClass]="type.type.name">{{ type.type.name | uppercase }}</li>
+              <app-pokemon-type [type]="type.type"></app-pokemon-type>
             }
           </ul>
         </article>
