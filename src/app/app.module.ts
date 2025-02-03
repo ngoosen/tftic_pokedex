@@ -14,6 +14,7 @@ import { HeaderComponent } from './components/shared/header/header.component';
 import { PokemonPageComponent } from './components/pokemon/pokemon-page/pokemon-page.component';
 import { LoadingComponent } from './components/shared/ui/loading/loading.component';
 import { PokeballComponent } from './components/shared/ui/pokeball/pokeball.component';
+import { FooterComponent } from './components/shared/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { PokeballComponent } from './components/shared/ui/pokeball/pokeball.comp
     PaginationComponent,
     PokemonPageComponent,
     LoadingComponent,
-    PokeballComponent
+    PokeballComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
