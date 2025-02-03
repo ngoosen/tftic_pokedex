@@ -1,0 +1,98 @@
+$size: 52px;
+
+.anim_container {
+  position: absolute;
+  top: 0;
+  left: 41.5%;
+
+  width: $size;
+  height: calc(6 * $size);
+
+  animation: rotate cubic-bezier(0.165, 0.84, 0.44, 1) 2s infinite;
+
+  .pokeball_container {
+    position: relative;
+
+    width: $size;
+    height: $size;
+
+    border-radius: 100%;
+    box-shadow: 0 0 50px 50px #ffffff;
+
+    .top_container,
+    .bottom_container {
+      width: $size;
+      height: calc($size / 2);
+
+      overflow: hidden;
+
+      .red_top,
+      .white_bottom {
+        width: $size;
+        height: $size;
+
+        border: 1px solid #000000;
+        border-radius: 100%;
+      }
+
+      .red_top {
+        background-color: #cc0000;
+      }
+
+      .white_bottom {
+        transform: translateY(-(calc($size / 2)));
+
+        background-color: #ffffff;
+      }
+    }
+
+    .black_separator {
+      position: absolute;
+      top: calc($size / 2);
+
+      width: $size;
+      height: calc($size / 20);
+
+      background-color: #000000;
+
+      .black_circle {
+        position: absolute;
+        top: -(calc($size / 10));
+        left: calc($size / 2.5);
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        width: calc($size / 4);
+        height: calc($size / 4);
+
+        border-radius: 100%;
+        background-color: #000000;
+
+        .white_circle {
+          width: calc($size / 6);
+          height: calc($size / 6);
+
+          border-radius: 100%;
+          background-color: #ffffff;
+        }
+      }
+    }
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+    opacity: 0;
+  }
+  90% {
+    transform: rotate(360deg);
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(360deg);
+    opacity: 1;
+  }
+}

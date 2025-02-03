@@ -13,6 +13,7 @@ import { SearchBarComponent } from './components/pokemon-list/search-bar/search-
 import { HeaderComponent } from './components/shared/header/header.component';
 import { PokemonPageComponent } from './components/pokemon/pokemon-page/pokemon-page.component';
 import { LoadingComponent } from './components/shared/ui/loading/loading.component';
+import { PokeballComponent } from './components/shared/ui/pokeball/pokeball.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { LoadingComponent } from './components/shared/ui/loading/loading.compone
     PokemonListItemComponent,
     PaginationComponent,
     PokemonPageComponent,
-    LoadingComponent
+    LoadingComponent,
+    PokeballComponent
   ],
   imports: [
     BrowserModule,
