@@ -14,5 +14,6 @@
   <p>Aucun Pokémon.</p>
 }
 
-<app-pagination (onChangePage)="updateList($event)">
-</app-pagination>
+@if (showPagination) {
+  <app-pagination (onChangePage)="updateList($event)"></app-pagination>
+}

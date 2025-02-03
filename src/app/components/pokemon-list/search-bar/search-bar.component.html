@@ -2,7 +2,7 @@
   <h2>Rechercher un pokémon</h2>
 
   <article>
-    <input type="text" placeholder="Entrez le nom du pokémon à rechercher..." [(ngModel)]="pokemonName" (keydown.enter)="search()" />
+    <input type="text" placeholder="Entrez le nom du pokémon à rechercher..." [(ngModel)]="pokemonName" (ngModelChange)="search()" (keydown.enter)="search()" />
     <button (click)="search()">Chercher</button>
   </article>
 </section>

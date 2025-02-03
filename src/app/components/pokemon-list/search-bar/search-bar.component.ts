@@ -17,6 +17,8 @@ export class SearchBarComponent {
   }
 
   search() {
+    console.log("hey!");
+
     this.onSearch.emit(this.pokemonName);
   }
 }
