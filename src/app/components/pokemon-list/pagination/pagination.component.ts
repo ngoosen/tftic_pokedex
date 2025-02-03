@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { PaginatedPokemonData } from '../../../models/paginatedPokemonData.model';
 import { PokemonUrl } from '../../../models/pokemonUrl.model';
-import { PokemonDataService } from '../../../tools/services/pokemon-data.service';
+import { PaginatedPokemonDataService } from '../../../tools/services/paginated-pokemon-data.service';
 
 @Component({
   selector: 'app-pagination',
@@ -20,7 +20,7 @@ export class PaginationComponent {
   currentPage: number = 1;
   currentPages: number[] = [1, 2, 3, 4, 5];
 
-  constructor(private _pokeService: PokemonDataService) {
+  constructor(private _pokeService: PaginatedPokemonDataService) {
     this.onChangePage = new EventEmitter<PokemonUrl[]>();
   }
 
@@ -103,7 +103,7 @@ export class PaginationComponent {
   }
 
   getPage(pageNb: number) {
-    this._pokeService.getAllPage(pageNb).subscribe({
+    this._pokeService.getAllByPage(pageNb).subscribe({
       next: (data) => {
         this.currentPage = pageNb;
         this._updateMetaData(data);

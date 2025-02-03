@@ -8,36 +8,40 @@ import { Pokemon } from '../../models/pokemon.model';
   providedIn: 'root'
 })
 export class PokemonDataService {
-  LIMIT: number = 21;
-
-  private _baseUrl = "https://pokeapi.co/api/v2/pokemon";
-  private _defaultUrl = `${this._baseUrl}?offset=0&limit=${this.LIMIT}`;
+  private _basePokemonUrl = "https://pokeapi.co/api/v2/pokemon";
 
   constructor(private _httpClient: HttpClient) { }
 
-  getAll(url = this._defaultUrl): Observable<PaginatedPokemonData> {
-    const limitlessUrl = url.split("limit=")[0];
-    return this._httpClient.get<PaginatedPokemonData>(`${limitlessUrl}limit=${this.LIMIT}`);
+  private _getNonPaginatedResults(totalPokemon: number): Observable<PaginatedPokemonData> {
+    const url = `${this._basePokemonUrl}?offset=0&limit=${totalPokemon}`;
+    console.log("🚀 ~ PokemonDataService ~ _getNonPaginatedResults ~ url:", url);
+    return this._httpClient.get<PaginatedPokemonData>(url)
   }
 
-  getAllFirstPage(): Observable<PaginatedPokemonData> {
-    return this._httpClient.get<PaginatedPokemonData>(this._defaultUrl);
+  private _getPokemonCount(): number | void {
+    this._httpClient
+      .get<PaginatedPokemonData>(this._basePokemonUrl)
+      .subscribe({
+        next: (data) => {
+          return data.count;
+        },
+        error: (e) => {
+          console.log(e);
+        }
+      });
   }
 
-  getAllLastPage(totalPages : number): Observable<PaginatedPokemonData> {
-    return this._httpClient.get<PaginatedPokemonData>(`${this._baseUrl}?offset=${(totalPages - 1) * this.LIMIT}&limit=${this.LIMIT}`);
-  }
-
-  getAllPage(pageNb: number): Observable<PaginatedPokemonData> {
-    const offset = pageNb === 1 ? 0 : (pageNb - 1) * this.LIMIT;
-    return this._httpClient.get<PaginatedPokemonData>(`${this._baseUrl}?offset=${offset}&limit=${this.LIMIT}`);
+  getAll(): Observable<PaginatedPokemonData> {
+    const totalPokemon = this._getPokemonCount() ?? 1304;
+    const url = `${this._basePokemonUrl}?offset=0&limit=${totalPokemon}`;
+    return this._httpClient.get<PaginatedPokemonData>(url);
   }
 
   getById(id: number): Observable<Pokemon> {
-    return this._httpClient.get<Pokemon>(`${this._baseUrl}/${id}`)
+    return this._httpClient.get<Pokemon>(`${this._basePokemonUrl}/${id}`)
   }
 
   getByName(name: string): Observable<Pokemon> {
-    return this._httpClient.get<Pokemon>(`${this._baseUrl}/${name}`)
+    return this._httpClient.get<Pokemon>(`${this._basePokemonUrl}/${name}`)
   }
 }

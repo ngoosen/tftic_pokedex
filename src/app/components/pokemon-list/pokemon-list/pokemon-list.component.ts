@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { PokemonUrl } from '../../../models/pokemonUrl.model';
-import { PokemonDataService } from '../../../tools/services/pokemon-data.service';
+import { PaginatedPokemonDataService } from '../../../tools/services/paginated-pokemon-data.service';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -12,12 +12,12 @@ import { PokemonDataService } from '../../../tools/services/pokemon-data.service
 export class PokemonListComponent {
   pokemonNamesList: PokemonUrl[] = [];
 
-  constructor (private _pokeService: PokemonDataService) { }
+  constructor (private _paginatedPokeService: PaginatedPokemonDataService) { }
 
   ngOnInit() {
-    this._pokeService.getAll().subscribe({
+    this._paginatedPokeService.getAll().subscribe({
       next: (data) => {
-        this.pokemonNamesList = data.results
+        this.pokemonNamesList = data.results;
       },
       error: (error) => {
         console.log(error);
