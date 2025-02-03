@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { PokemonUrl } from '../../../models/pokemonUrl.model';
+import { PokemonDataService } from '../../../tools/services/pokemon-data.service';
 
 @Component({
   selector: 'app-pokemon-list-item',
@@ -12,7 +13,23 @@ import { PokemonUrl } from '../../../models/pokemonUrl.model';
 export class PokemonListItemComponent {
   @Input() pokemon!: PokemonUrl;
 
-  constructor(private _router: Router) { }
+  pokemonImg!: string;
+
+  constructor(private _router: Router, private _pokeService: PokemonDataService) { }
+
+  ngOnChanges() {
+    this.pokemonImg = "";
+    const pokemonId = this.pokemon.url.split("/").slice(-2)[0];
+
+    this._pokeService.getById(parseInt(pokemonId)).subscribe({
+      next: (data) => {
+        this.pokemonImg = data.sprites.other['official-artwork'].front_default
+      },
+      error: (e) => {
+        console.log(e);
+      },
+    });
+  }
 
   goToPokemonPage(url: string) {
     const pokemonId = url.split("/").slice(-2)[0];

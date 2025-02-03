@@ -1,6 +1,9 @@
 <li (click)="goToPokemonPage(pokemon.url)">
-  <div></div>
+  <div class="image">
+    <img [src]="pokemonImg" alt="">
+  </div>
   <div class="name">
+    <div class="glow"></div>
     <p>{{ pokemon.name | titlecase }}</p>
   </div>
 </li>

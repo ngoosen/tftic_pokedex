@@ -6,28 +6,61 @@ li {
   justify-content: space-between;
   align-items: center;
 
-  min-height: 100px;
+  height: 290px;
 
   border-radius: 5px;
 
   background-color: #e6e6e6;
 
+  transition: all .5s;
   overflow: hidden;
 
+  .image {
+    img {
+      width: 100%;
+      max-height: 250px;
+    }
+  }
+
   .name {
+    position: relative;
+
     width: 100%;
-
-    padding: 6px;
-
-    background-color: #cc0000;
+    height: 30px;
 
     p {
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      width: 100%;
+
+      padding: 5px;
+
       text-align: center;
       color: #ffffff;
+    }
+
+    .glow {
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      width: 460%;
+      height: 100%;
+
+      background: linear-gradient(315deg, #cc0000 0%, #e44c4c 40%, #f7e3e0 45%, #e44c4c 50%, #e44c4c 50%, #f7e3e0 70%, #cc0000 80%, #cc0000 100%);
+
+      transition: all .5s;
     }
   }
 
   &:hover {
     cursor: pointer;
+    background-color: #f3f3f3;
+
+    .glow {
+      transform: translateX(-78%);
+    }
   }
 }
