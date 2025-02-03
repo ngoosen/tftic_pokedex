@@ -43,114 +43,118 @@ main {
   border-radius: 10px;
   background-color: #f0f0f0;
 
-  section {
+  .top_section {
     display: flex;
     justify-content: space-between;
     gap: 20px;
 
-    article {
+    section {
       flex: 1;
 
-      h1 {
-        color: #cc0000;
-        font-size: 50px;
-      }
-
-      ul {
-        display: flex;
-        gap: 5px;
-
-        list-style: none;
-
-        li {
-          padding: 3px 15px;
-
-          color: #ffffff;
-          font-weight: bold;
-          text-shadow: 0 0 10px #000000;
-
-          border-radius: 30px;
+      article {
+        h1 {
+          color: #cc0000;
+          font-size: 50px;
         }
 
-        .normal {
-          background-color: #A8A77A;
+        ul {
+          list-style: none;
         }
 
-        .fighting {
-          background-color: #C22E28;
-        }
+        .types {
+          display: flex;
+          gap: 5px;
 
-        .flying {
-          background-color: #A98FF3;
-        }
+          li {
+            padding: 3px 15px;
 
-        .poison {
-          background-color: #A33EA1;
-        }
+            color: #ffffff;
+            font-weight: bold;
+            text-shadow: 0 0 10px #000000;
 
-        .ground {
-          background-color: #E2BF65;
-        }
+            border-radius: 30px;
+          }
 
-        .rock {
-          background-color: #B6A136;
-        }
+          .normal {
+            background-color: #A8A77A;
+          }
 
-        .bug {
-          background-color: #A6B91A;
-        }
+          .fighting {
+            background-color: #C22E28;
+          }
 
-        .ghost {
-          background-color: #735797;
-        }
+          .flying {
+            background-color: #A98FF3;
+          }
 
-        .steel {
-          background-color: #B7B7CE;
-        }
+          .poison {
+            background-color: #A33EA1;
+          }
 
-        .fire {
-          background-color: #EE8130;
-        }
+          .ground {
+            background-color: #E2BF65;
+          }
 
-        .water {
-          background-color: #6390F0;
-        }
+          .rock {
+            background-color: #B6A136;
+          }
 
-        .grass {
-          background-color: #7AC74C;
-        }
+          .bug {
+            background-color: #A6B91A;
+          }
 
-        .electric {
-          background-color: #F7D02C;
-        }
+          .ghost {
+            background-color: #735797;
+          }
 
-        .psychic {
-          background-color: #F95587;
-        }
+          .steel {
+            background-color: #B7B7CE;
+          }
 
-        .ice {
-          background-color: #96D9D6;
-        }
+          .fire {
+            background-color: #EE8130;
+          }
 
-        .dragon {
-          background-color: #6F35FC;
-        }
+          .water {
+            background-color: #6390F0;
+          }
 
-        .dark {
-          background-color: #705746;
-        }
+          .grass {
+            background-color: #7AC74C;
+          }
 
-        .fairy {
-          background-color: #D685AD;
-        }
+          .electric {
+            background-color: #F7D02C;
+          }
 
-        .stellar {
-          background: linear-gradient(45deg, rgba(255,0,191,1) 0%, rgba(149,0,255,1) 17%, rgba(0,18,255,1) 34%, rgba(0,230,255,1) 51%, rgba(0,255,71,1) 68%, rgba(255,248,0,1) 83%, rgba(255,0,0,1) 100%);
+          .psychic {
+            background-color: #F95587;
+          }
 
-        }
+          .ice {
+            background-color: #96D9D6;
+          }
 
-        .unknown {
-          background-color: #648f79;
+          .dragon {
+            background-color: #6F35FC;
+          }
+
+          .dark {
+            background-color: #705746;
+          }
+
+          .fairy {
+            background-color: #D685AD;
+          }
+
+          .stellar {
+            background: linear-gradient(45deg, rgba(255,0,191,1) 0%, rgba(149,0,255,1) 17%, rgba(0,18,255,1) 34%, rgba(0,230,255,1) 51%, rgba(0,255,71,1) 68%, rgba(255,248,0,1) 83%, rgba(255,0,0,1) 100%);
+
+          }
+
+          .unknown {
+            background-color: #648f79;
+          }
         }
       }
     }

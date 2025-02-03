@@ -4,7 +4,7 @@ export interface Pokemon {
   id: number;
   name: string;
   base_experience: number;
-  height: 6;
+  height: number;
   weight: number;
 
   abilities: {
@@ -15,7 +15,7 @@ export interface Pokemon {
   forms: PokemonUrl[];
 
   moves: {
-    move: PokemonUrl
+    move: PokemonUrl;
   }[];
 
   species: PokemonUrl;

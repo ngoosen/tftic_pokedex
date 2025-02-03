@@ -24,6 +24,7 @@ export class PokemonPageComponent {
     this._pokeService.getById(pokemonId).subscribe({
       next: (data) => {
         this.pokemon = data;
+        console.log("🚀 ~ PokemonPageComponent ~ this._pokeService.getById ~ data:", data);
         this.pokemonImgSrc = data.sprites.other['official-artwork'].front_default;
         this.pageIsLoading = false;
       },
@@ -33,4 +34,16 @@ export class PokemonPageComponent {
       },
     });
   }
+
+  // TODO: add abilities
+  // https://pokeapi.co/api/v2/pokemon/1
+
+  // TODO: add moves
+  // https://pokeapi.co/api/v2/move/13/
+
+  // TODO: add evolution chain
+  // https://pokeapi.co/api/v2/evolution-chain/1
+
+  // TODO: add french version?
+  // https://pokeapi.co/api/v2/pokemon-species/1
 }

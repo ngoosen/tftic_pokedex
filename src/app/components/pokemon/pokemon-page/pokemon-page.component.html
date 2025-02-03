@@ -12,19 +12,55 @@
 }
 @else {
   <main>
-    <section>
-      <article>
-        <img [src]="pokemonImgSrc" [alt]="pokemon.name" />
-      </article>
-      <article>
-        <h1>{{ pokemon.name | titlecase }}</h1>
+    <section class="top_section">
+      <section>
+        <article>
+          <img [src]="pokemonImgSrc" [alt]="pokemon.name" />
+        </article>
+      </section>
+      <section>
+        <article>
+          <h1>{{ pokemon.name | titlecase }}</h1>
+          <ul class="types">
+            @for (type of pokemon.types; track $index) {
+              <li [ngClass]="type.type.name">{{ type.type.name | uppercase }}</li>
+            }
+          </ul>
+        </article>
+        <article>
+          <ul>
+            <li>Expérience de base : {{ pokemon.base_experience }}</li>
+            <!-- TODO: create pipe(s) for height and weight conversions -->
+            <li>Taille : {{ pokemon.height * 10 }} cm</li>
+            <li>Poids : {{ pokemon.weight / 10 }}kg</li>
+          </ul>
+        </article>
+        <article>
+          <h2>Talents</h2>
+          <ul>
+            @for (ability of pokemon.abilities; track $index) {
+              <li>
+                {{ ability.ability.name | titlecase }}
+                @if (ability.is_hidden) {
+                  <span>(caché)</span>
+                }
+              </li>
+            }
+          </ul>
+        </article>
+        <article>
+          <h2>Capacités</h2>
+          <ul>
+            @for (move of pokemon.moves; track $index) {
+              <li>{{ move.move.name.replace("-", " ") | titlecase }}</li>
+            }
+          </ul>
+        </article>
+      </section>
+    </section>
 
-        <ul>
-          @for (type of pokemon.types; track $index) {
-            <li [ngClass]="type.type.name">{{ type.type.name | uppercase }}</li>
-          }
-        </ul>
-      </article>
+    <section>
+      <h2>Chaîne d'évolution</h2>
     </section>
   </main>
 }
