@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { PokemonSpecies } from '../../../models/pokemonSpecies.model';
+import { PokemonUrl } from '../../../models/pokemonUrl.model';
 import { EvolutionService } from '../../../tools/services/evolution.service';
 
 @Component({
@@ -13,18 +14,18 @@ export class EvolutionChainComponent {
   @Input() pokemonName: string = "";
 
   species!: PokemonSpecies;
-  evolutionChain: string[] = [];
+  evolutionChain: PokemonUrl[] = [];
 
   constructor (private _evolutionService: EvolutionService) { }
 
   getEvolutionChain(url: string) {
     this._evolutionService.getEvolutionChain(url).subscribe({
       next: (data) => {
-        this.evolutionChain.push(data.chain.species.name);
+        this.evolutionChain.push(data.chain.species);
         let chainLink = data.chain.evolves_to;
 
         while (chainLink.length > 0) {
-          this.evolutionChain.push(chainLink[0].species.name);
+          this.evolutionChain.push(chainLink[0].species);
           chainLink = chainLink[0].evolves_to;
         }
       },

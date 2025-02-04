@@ -1,5 +1,5 @@
 <ul>
   @for (evolution of evolutionChain; track $index) {
-    <li>{{ evolution }}</li>
+    <app-pokemon-list-item [pokemon]="evolution" [reloadPage]="true"></app-pokemon-list-item>
   }
 </ul>
