@@ -1,5 +1,9 @@
 <ul>
   @for (evolution of evolutionChain; track $index) {
     <app-pokemon-list-item [pokemon]="evolution" [reloadPage]="true"></app-pokemon-list-item>
+
+    @if ($index !== evolutionChain.length - 1) {
+      <li class="arrow">➡</li>
+    }
   }
 </ul>
