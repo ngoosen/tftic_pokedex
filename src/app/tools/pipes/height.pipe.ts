@@ -10,7 +10,7 @@ export class HeightPipe implements PipeTransform {
   transform(value: number): string {
     if (value === 0) return "0 cm";
 
-    if (value > 10) {
+    if (value >= 10) {
       return `${value / 10} m`
     }
 
