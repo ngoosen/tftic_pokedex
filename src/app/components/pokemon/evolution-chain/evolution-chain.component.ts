@@ -24,6 +24,7 @@ export class EvolutionChainComponent {
   getEvolutionChain(url: string) {
     this._evolutionService.getEvolutionChain(url).subscribe({
       next: (data) => {
+        console.log("🚀 ~ EvolutionChainComponent ~ this._evolutionService.getEvolutionChain ~ data:", data);
         const firstPokemon = data.chain.species;
 
         // Evolution chain's second form(s)
@@ -51,8 +52,20 @@ export class EvolutionChainComponent {
           }
         } else if (middlePokemons.length === 1 && finalPokemons.length > 1) {
           // Branch at middle form -> multiple lists
-          finalPokemons.forEach((pokemon, index) => {
+          finalPokemons.forEach(pokemon => {
             this.evolutions.push([firstPokemon, middlePokemons[0], pokemon]);
+          });
+        } else if (middlePokemons.length > 1 && finalPokemons.length === 1) {
+          // Branch at first pokemon, but only one middle form evolves again (literally just one pokemon called Applin)
+
+          middlePokemons.forEach((pokemon, index) => {
+            const cell = [firstPokemon, pokemon];
+
+            if (finalForms[index].length > 0) {
+              cell.push(finalForms[index][0].species);
+            }
+
+            this.evolutions.push(cell);
           });
         } else {
           // Branch at first pokemon -> multiple lists
