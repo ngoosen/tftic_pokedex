@@ -16,6 +16,7 @@ import { LoadingComponent } from './components/shared/ui/loading/loading.compone
 import { PokeballComponent } from './components/shared/ui/pokeball/pokeball.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { PokemonTypeComponent } from './components/pokemon/pokemon-type/pokemon-type.component';
+import { HeightPipe } from './tools/pipes/height.pipe';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { PokemonTypeComponent } from './components/pokemon/pokemon-type/pokemon-
     LoadingComponent,
     PokeballComponent,
     FooterComponent,
-    PokemonTypeComponent
+    PokemonTypeComponent,
+    HeightPipe
   ],
   imports: [
     BrowserModule,
