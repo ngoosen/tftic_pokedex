@@ -1,0 +1,40 @@
+.one_evolution_chain {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+
+  margin-top: 20px;
+  padding: 10px;
+
+  border-radius: 5px;
+  background-color: #d8d8d8;
+}
+
+.multiple_evolution_chain {
+  list-style: none;
+
+  li {
+    ul {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+
+      margin-top: 20px;
+      padding: 10px;
+
+      border-radius: 5px;
+      background-color: #d8d8d8;
+    }
+  }
+}
+
+.arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  list-style: none;
+
+  font-size: 50px;
+  color: #cc0000;
+}

@@ -24,7 +24,7 @@ export class PokemonPageComponent {
     this._pokeService.getById(pokemonId).subscribe({
       next: (data) => {
         this.pokemon = data;
-        console.log("🚀 ~ PokemonPageComponent ~ this._pokeService.getById ~ data:", data);
+        // console.log("🚀 ~ PokemonPageComponent ~ this._pokeService.getById ~ data:", data);
         this.pokemonImgSrc = data.sprites.other['official-artwork'].front_default;
         this.pageIsLoading = false;
       },

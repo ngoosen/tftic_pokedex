@@ -21,7 +21,7 @@ export class PokemonTypeComponent {
   ngOnInit() {
     this._typeService.getType(this.type.name).subscribe({
       next: (data) => {
-        console.log("data", data);
+        // console.log("data", data);
         this.typeDetails = data;
         const frenchType = data.names.find(type => type.language.name === "fr");
 
