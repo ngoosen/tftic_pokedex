@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { ChainLink } from '../../../models/evolutionChain.model';
 import { PokemonSpecies } from '../../../models/pokemonSpecies.model';
 import { PokemonUrl } from '../../../models/pokemonUrl.model';
 import { EvolutionService } from '../../../tools/services/evolution.service';
@@ -23,25 +24,47 @@ export class EvolutionChainComponent {
   getEvolutionChain(url: string) {
     this._evolutionService.getEvolutionChain(url).subscribe({
       next: (data) => {
-        let chainLink = data.chain.evolves_to;
+        const firstPokemon = data.chain.species;
 
-        while (chainLink.length > 0) {
-          if (chainLink.length === 1) {
-            if (this.evolutionChain.length === 0) {
-              this.evolutionChain.push(data.chain.species);
+        // Evolution chain's second form(s)
+        const middleForms = data.chain.evolves_to;
+        const middlePokemons: PokemonUrl[] = middleForms.map(form => form.species);
+
+        // Evolution chain's optional third and final form(s)
+        const finalForms: ChainLink[][] = [];
+        middleForms.map(form => finalForms.push(form.evolves_to));
+
+        const finalPokemons: PokemonUrl[] = []
+
+        finalForms.forEach(cell => {
+          cell.forEach(form => finalPokemons.push(form.species));
+        })
+
+
+        // Dispatching evolutions
+        if (middlePokemons.length === 1 && (finalPokemons.length === 0 || finalPokemons.length === 1)) {
+          // Normal chain -> unique list
+          this.evolutionChain = [firstPokemon, middlePokemons[0]];
+
+          if (finalPokemons.length === 1) {
+            this.evolutionChain.push(finalPokemons[0]);
+          }
+        } else if (middlePokemons.length === 1 && finalPokemons.length > 1) {
+          // Branch at middle form -> multiple lists
+          finalPokemons.forEach((pokemon, index) => {
+            this.evolutions.push([firstPokemon, middlePokemons[0], pokemon]);
+          });
+        } else {
+          // Branch at first pokemon -> multiple lists
+          middlePokemons.forEach((pokemon, index) => {
+            const cell = [firstPokemon, pokemon];
+
+            if (finalPokemons[index]) {
+              cell.push(finalPokemons[index]);
             }
 
-            this.evolutionChain.push(chainLink[0].species);
-          } else {
-            chainLink.forEach(link => {
-              this.evolutions.push([
-                data.chain.species,
-                link.species
-              ]);
-            });
-          }
-
-          chainLink = chainLink[0].evolves_to;
+            this.evolutions.push(cell);
+          });
         }
       },
       error: (e) => {

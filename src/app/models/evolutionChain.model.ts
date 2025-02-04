@@ -1,6 +1,6 @@
 import { PokemonUrl } from "./pokemonUrl.model";
 
-interface ChainLink {
+export interface ChainLink {
   species: PokemonUrl;
   evolves_to: ChainLink[];
 }
