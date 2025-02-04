@@ -29,9 +29,33 @@
         </article>
         <article class="basic_infos">
           <ul>
-            <li>Expérience de base : {{ pokemon.base_experience }}</li>
-            <li>Taille : {{ pokemon.height | height }}</li>
-            <li>Poids : {{ pokemon.weight | weight }}</li>
+            <li>
+              <div class="title">
+                <p>Expérience de base</p>
+              </div>
+              <div class="slash"></div>
+              <div>
+                <p>{{ pokemon.base_experience }}</p>
+              </div>
+            </li>
+            <li>
+              <div class="title">
+                <p>Taille</p>
+              </div>
+              <div class="slash"></div>
+              <div>
+                <p>{{ pokemon.height | height }}</p>
+              </div>
+            </li>
+            <li>
+              <div class="title">
+                <p>Poids</p>
+              </div>
+              <div class="slash"></div>
+              <div>
+                <p>{{ pokemon.weight | weight }}</p>
+              </div>
+            </li>
           </ul>
         </article>
         <article class="abilities">
