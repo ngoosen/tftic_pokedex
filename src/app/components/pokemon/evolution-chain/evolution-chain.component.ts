@@ -16,16 +16,31 @@ export class EvolutionChainComponent {
   species!: PokemonSpecies;
   evolutionChain: PokemonUrl[] = [];
 
+  evolutions: PokemonUrl[][] = [];
+
   constructor (private _evolutionService: EvolutionService) { }
 
   getEvolutionChain(url: string) {
     this._evolutionService.getEvolutionChain(url).subscribe({
       next: (data) => {
-        this.evolutionChain.push(data.chain.species);
         let chainLink = data.chain.evolves_to;
 
         while (chainLink.length > 0) {
-          this.evolutionChain.push(chainLink[0].species);
+          if (chainLink.length === 1) {
+            if (this.evolutionChain.length === 0) {
+              this.evolutionChain.push(data.chain.species);
+            }
+
+            this.evolutionChain.push(chainLink[0].species);
+          } else {
+            chainLink.forEach(link => {
+              this.evolutions.push([
+                data.chain.species,
+                link.species
+              ]);
+            });
+          }
+
           chainLink = chainLink[0].evolves_to;
         }
       },

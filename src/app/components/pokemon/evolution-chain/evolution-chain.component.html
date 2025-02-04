@@ -1,13 +1,39 @@
-<ul>
-  @for (evolution of evolutionChain; track $index) {
-    <app-pokemon-list-item
+<h2>Chaîne{{ evolutions.length > 0 ? "s" : "" }} d'évolution</h2>
+
+@if (evolutionChain.length > 0) {
+  <ul class="one_evolution_chain">
+    @for (evolution of evolutionChain; track $index) {
+      <app-pokemon-list-item
       [pokemon]="evolution"
       [reloadPage]="true"
       [active]="evolution.name === pokemonName"
-    ></app-pokemon-list-item>
+      ></app-pokemon-list-item>
 
-    @if ($index !== evolutionChain.length - 1) {
-      <li class="arrow">➡</li>
+      @if ($index !== evolutionChain.length - 1) {
+        <li class="arrow">➡</li>
+      }
     }
-  }
-</ul>
+  </ul>
+}
+
+@if (evolutions.length > 0) {
+  <ul class="multiple_evolution_chain">
+    @for (cell of evolutions; track $index) {
+      <li>
+        <ul>
+          @for (evolution of cell; track $index) {
+            <app-pokemon-list-item
+            [pokemon]="evolution"
+            [reloadPage]="true"
+            [active]="evolution.name === pokemonName"
+            ></app-pokemon-list-item>
+
+            @if ($index !== cell.length - 1) {
+              <li class="arrow">➡</li>
+            }
+          }
+        </ul>
+      </li>
+    }
+  </ul>
+}
