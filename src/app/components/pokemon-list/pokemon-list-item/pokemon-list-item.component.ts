@@ -13,6 +13,7 @@ import { PokemonDataService } from '../../../tools/services/pokemon-data.service
 export class PokemonListItemComponent {
   @Input() pokemon!: PokemonUrl;
   @Input() reloadPage: boolean = false;
+  @Input() active: boolean = false;
 
   pokemonImg!: string;
 
@@ -33,6 +34,8 @@ export class PokemonListItemComponent {
   }
 
   goToPokemonPage(url: string) {
+    if (this.active) return;
+
     const pokemonId = url.split("/").slice(-2)[0];
     this._router.navigate(["/pokemon", pokemonId]);
 

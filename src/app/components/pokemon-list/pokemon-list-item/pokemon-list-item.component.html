@@ -1,4 +1,4 @@
-<li (click)="goToPokemonPage(pokemon.url)">
+<li (click)="goToPokemonPage(pokemon.url)" [ngClass]="{ 'active': active }">
   <div class="image">
     <img [src]="pokemonImg" alt="">
   </div>
