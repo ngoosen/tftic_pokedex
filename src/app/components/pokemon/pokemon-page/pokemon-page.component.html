@@ -13,7 +13,7 @@
 @else {
   <main>
     <section class="top_section">
-      <section>
+      <section class="img_section">
         <article>
           <img [src]="pokemonImgSrc" [alt]="pokemon.name" />
         </article>
@@ -27,7 +27,7 @@
             }
           </ul>
         </article>
-        <article>
+        <article class="basic_infos">
           <ul>
             <li>Expérience de base : {{ pokemon.base_experience }}</li>
             <!-- TODO: create pipe(s) for height and weight conversions -->
@@ -35,7 +35,7 @@
             <li>Poids : {{ pokemon.weight / 10 }}kg</li>
           </ul>
         </article>
-        <article>
+        <article class="abilities">
           <h2>Talents</h2>
           <ul>
             @for (ability of pokemon.abilities; track $index) {
@@ -48,7 +48,7 @@
             }
           </ul>
         </article>
-        <article>
+        <article class="moves">
           <h2>Capacités</h2>
           <ul>
             @for (move of pokemon.moves; track $index) {
