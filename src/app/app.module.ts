@@ -18,6 +18,7 @@ import { FooterComponent } from './components/shared/footer/footer.component';
 import { PokemonTypeComponent } from './components/pokemon/pokemon-type/pokemon-type.component';
 import { HeightPipe } from './tools/pipes/height.pipe';
 import { WeightPipe } from './tools/pipes/weight.pipe';
+import { EvolutionChainComponent } from './components/pokemon/evolution-chain/evolution-chain.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { WeightPipe } from './tools/pipes/weight.pipe';
     FooterComponent,
     PokemonTypeComponent,
     HeightPipe,
-    WeightPipe
+    WeightPipe,
+    EvolutionChainComponent
   ],
   imports: [
     BrowserModule,
