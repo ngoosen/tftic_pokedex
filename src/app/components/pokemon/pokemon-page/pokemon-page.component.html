@@ -58,28 +58,32 @@
             </li>
           </ul>
         </article>
-        <article class="abilities">
-          <h2>Talents</h2>
-          <ul>
-            @for (ability of pokemon.abilities; track $index) {
-              <li>
-                {{ ability.ability.name | titlecase }}
-                @if (ability.is_hidden) {
-                  <span>(caché)</span>
-                }
-              </li>
-            }
-          </ul>
-        </article>
-        <article class="moves">
-          <h2>Capacités</h2>
-          <ul>
-            @for (move of pokemon.moves; track $index) {
-              <li>{{ move.move.name.replace("-", " ") | titlecase }}</li>
-            }
-          </ul>
-        </article>
+
       </section>
+    </section>
+
+    <section class="abilities_moves_section">
+      <article class="abilities">
+        <h2>Talents</h2>
+        <ul>
+          @for (ability of pokemon.abilities; track $index) {
+            <li>
+              {{ ability.ability.name | titlecase }}
+              @if (ability.is_hidden) {
+                <span>(caché)</span>
+              }
+            </li>
+          }
+        </ul>
+      </article>
+      <article class="moves">
+        <h2>Capacités</h2>
+        <ul>
+          @for (move of pokemon.moves; track $index) {
+            <li>{{ move.move.name.replace("-", " ") | titlecase }}</li>
+          }
+        </ul>
+      </article>
     </section>
 
     <section>
