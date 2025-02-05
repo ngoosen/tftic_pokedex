@@ -19,6 +19,7 @@ import { LoadingComponent } from './components/shared/ui/loading/loading.compone
 import { PokeballComponent } from './components/shared/ui/pokeball/pokeball.component';
 import { HeightPipe } from './tools/pipes/height.pipe';
 import { WeightPipe } from './tools/pipes/weight.pipe';
+import { PopupComponent } from './components/shared/ui/popup/popup.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { WeightPipe } from './tools/pipes/weight.pipe';
     HeightPipe,
     WeightPipe,
     EvolutionChainComponent,
+    PopupComponent,
   ],
   imports: [
     BrowserModule,
