@@ -1,3 +1,15 @@
-<li [ngClass]="type.name">
+<li class="main" [ngClass]="type.name">
   {{ (typeFrenchName !== "" ? typeFrenchName : type.name) | uppercase }}
+
+  <div class="toolbox_container">
+    <div class="pointer"></div>
+    <div class="toolbox">
+      <ul>
+        <li>test</li>
+        <li>test</li>
+        <li>test</li>
+        <li>test</li>
+      </ul>
+    </div>
+  </div>
 </li>
