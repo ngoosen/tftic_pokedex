@@ -88,6 +88,50 @@ $shadow: 0 5px 10px 0 #929292;
   }
 }
 
+.popup_content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+
+  width: 100%;
+  height: 100%;
+
+  margin-top: 20px;
+  margin-bottom: 40px;
+
+  h2 {
+    width: fit-content;
+  }
+
+  .text {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    margin-top: 20px;
+
+    article {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      ul {
+        display: flex;
+        gap: 10px;
+
+        li {
+          list-style: none;
+
+          &:hover {
+            cursor: default;
+          }
+        }
+      }
+    }
+  }
+}
+
 .normal {
   background-color: #A8A77A;
 }

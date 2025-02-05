@@ -1,4 +1,10 @@
-<li class="main" [ngClass]="type.name" (mouseenter)="toggleToolbox(true)" (mouseleave)="toggleToolbox(false)">
+<li
+  class="main"
+  [ngClass]="type.name"
+  (mouseenter)="toggleToolbox(true)"
+  (mouseleave)="toggleToolbox(false)"
+  (click)="openPopup()"
+>
   {{ (typeFrenchName !== "" ? typeFrenchName : type.name) | uppercase }}
 
   @if (showToolbox) {
@@ -46,6 +52,99 @@
         </ul>
       </div>
     </div>
-
   }
 </li>
+
+@if (showPopup) {
+  <app-popup (onClose)="closePopup()">
+    <section class="popup_content">
+      <h2 class="main" [ngClass]="type.name">{{ (typeFrenchName !== "" ? typeFrenchName : type.name) | uppercase }}</h2>
+
+      <section class="text">
+        <article>
+          <h3>Inflige double dégâts à :</h3>
+
+          <ul>
+            @if (typeDetails.damage_relations.double_damage_to.length === 0) {
+              <li>Aucun</li>
+            }
+
+            @for (item of typeDetails.damage_relations.double_damage_to; track $index) {
+              <li class="main" [ngClass]="item.name">{{ item.name | uppercase }}</li>
+            }
+          </ul>
+        </article>
+
+        <article>
+          <h3>Inflige la moitié des dégâts à :</h3>
+
+          <ul>
+            @if (typeDetails.damage_relations.half_damage_to.length === 0) {
+              <li>Aucun</li>
+            }
+
+            @for (item of typeDetails.damage_relations.half_damage_to; track $index) {
+              <li class="main" [ngClass]="item.name">{{ item.name | uppercase }}</li>
+            }
+          </ul>
+        </article>
+
+        <article>
+          <h3>Subit double dégâts face à :</h3>
+
+          <ul>
+            @if (typeDetails.damage_relations.double_damage_from.length === 0) {
+              <li>Aucun</li>
+            }
+
+            @for (item of typeDetails.damage_relations.double_damage_from; track $index) {
+              <li class="main" [ngClass]="item.name">{{ item.name | uppercase }}</li>
+            }
+          </ul>
+        </article>
+
+        <article>
+          <h3>Subit la moitié des dégâts face à :</h3>
+
+          <ul>
+            @if (typeDetails.damage_relations.half_damage_from.length === 0) {
+              <li>Aucun</li>
+            }
+
+            @for (item of typeDetails.damage_relations.half_damage_from; track $index) {
+              <li class="main" [ngClass]="item.name">{{ item.name | uppercase }}</li>
+            }
+          </ul>
+        </article>
+
+        <article>
+          <h3>N'inflige aucun dégât à :</h3>
+
+          <ul>
+            @if (typeDetails.damage_relations.no_damage_to.length === 0) {
+              <li>Aucun</li>
+            }
+
+            @for (item of typeDetails.damage_relations.no_damage_to; track $index) {
+              <li class="main" [ngClass]="item.name">{{ item.name | uppercase }}</li>
+            }
+          </ul>
+        </article>
+
+        <article>
+          <h3>Ne subit aucun dégât face à :</h3>
+
+          <ul>
+            @if (typeDetails.damage_relations.no_damage_from.length === 0) {
+              <li>Aucun</li>
+            }
+
+            @for (item of typeDetails.damage_relations.no_damage_from; track $index) {
+              <li class="main" [ngClass]="item.name">{{ item.name | uppercase }}</li>
+            }
+          </ul>
+        </article>
+      </section>
+    </section>
+  </app-popup>
+}

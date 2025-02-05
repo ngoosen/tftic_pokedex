@@ -15,7 +15,9 @@ export class PokemonTypeComponent {
 
   typeDetails!: PokemonType;
   typeFrenchName: string = "";
+
   showToolbox: boolean = false;
+  showPopup: boolean = false;
 
   constructor (private _typeService: TypesService) { }
 
@@ -38,5 +40,13 @@ export class PokemonTypeComponent {
 
   toggleToolbox(value: boolean) {
     this.showToolbox = value;
+  }
+
+  openPopup() {
+    this.showPopup = true;
+  }
+
+  closePopup() {
+    this.showPopup = false;
   }
 }
