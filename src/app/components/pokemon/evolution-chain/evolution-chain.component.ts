@@ -24,7 +24,6 @@ export class EvolutionChainComponent {
   getEvolutionChain(url: string) {
     this._evolutionService.getEvolutionChain(url).subscribe({
       next: (data) => {
-        console.log("🚀 ~ EvolutionChainComponent ~ this._evolutionService.getEvolutionChain ~ data:", data);
         const firstPokemon = data.chain.species;
 
         // Evolution chain's second form(s)
