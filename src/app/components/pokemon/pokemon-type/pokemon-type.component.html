@@ -1,15 +1,51 @@
-<li class="main" [ngClass]="type.name">
+<li class="main" [ngClass]="type.name" (mouseenter)="toggleToolbox(true)" (mouseleave)="toggleToolbox(false)">
   {{ (typeFrenchName !== "" ? typeFrenchName : type.name) | uppercase }}
 
-  <div class="toolbox_container">
-    <div class="pointer"></div>
-    <div class="toolbox">
-      <ul>
-        <li>test</li>
-        <li>test</li>
-        <li>test</li>
-        <li>test</li>
-      </ul>
+  @if (showToolbox) {
+    <div class="toolbox_container">
+      <div class="pointer"></div>
+      <div class="toolbox">
+        <ul>
+          <li>
+            <lucide-icon name="chevrons-right" size="20" class="chevron"></lucide-icon>
+            <div class="dots">
+              @for (item of typeDetails.damage_relations.double_damage_to; track $index) {
+                <div class="dot" [ngClass]="item.name"></div>
+              }
+            </div>
+          </li>
+
+          <li>
+            <lucide-icon name="chevron-right" size="20" class="chevron"></lucide-icon>
+            <div class="dots">
+              @for (item of typeDetails.damage_relations.half_damage_to; track $index) {
+                <div class="dot" [ngClass]="item.name"></div>
+              }
+            </div>
+          </li>
+
+          <hr color="#d8d8d8" />
+
+          <li>
+            <lucide-icon name="chevrons-left" size="20" class="chevron"></lucide-icon>
+            <div class="dots">
+              @for (item of typeDetails.damage_relations.double_damage_from; track $index) {
+                <div class="dot" [ngClass]="item.name"></div>
+              }
+            </div>
+          </li>
+
+          <li>
+            <lucide-icon name="chevron-left" size="20" class="chevron"></lucide-icon>
+            <div class="dots">
+              @for (item of typeDetails.damage_relations.half_damage_from; track $index) {
+                <div class="dot" [ngClass]="item.name"></div>
+              }
+            </div>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
+
+  }
 </li>

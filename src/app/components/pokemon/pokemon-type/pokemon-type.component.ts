@@ -15,6 +15,7 @@ export class PokemonTypeComponent {
 
   typeDetails!: PokemonType;
   typeFrenchName: string = "";
+  showToolbox: boolean = false;
 
   constructor (private _typeService: TypesService) { }
 
@@ -33,5 +34,9 @@ export class PokemonTypeComponent {
         console.log(e);
       },
     });
+  }
+
+  toggleToolbox(value: boolean) {
+    this.showToolbox = value;
   }
 }

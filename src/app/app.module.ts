@@ -10,15 +10,15 @@ import { PaginationComponent } from './components/pokemon-list/pagination/pagina
 import { PokemonListItemComponent } from './components/pokemon-list/pokemon-list-item/pokemon-list-item.component';
 import { PokemonListComponent } from './components/pokemon-list/pokemon-list/pokemon-list.component';
 import { SearchBarComponent } from './components/pokemon-list/search-bar/search-bar.component';
-import { HeaderComponent } from './components/shared/header/header.component';
+import { EvolutionChainComponent } from './components/pokemon/evolution-chain/evolution-chain.component';
 import { PokemonPageComponent } from './components/pokemon/pokemon-page/pokemon-page.component';
+import { PokemonTypeComponent } from './components/pokemon/pokemon-type/pokemon-type.component';
+import { FooterComponent } from './components/shared/footer/footer.component';
+import { HeaderComponent } from './components/shared/header/header.component';
 import { LoadingComponent } from './components/shared/ui/loading/loading.component';
 import { PokeballComponent } from './components/shared/ui/pokeball/pokeball.component';
-import { FooterComponent } from './components/shared/footer/footer.component';
-import { PokemonTypeComponent } from './components/pokemon/pokemon-type/pokemon-type.component';
 import { HeightPipe } from './tools/pipes/height.pipe';
 import { WeightPipe } from './tools/pipes/weight.pipe';
-import { EvolutionChainComponent } from './components/pokemon/evolution-chain/evolution-chain.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +35,7 @@ import { EvolutionChainComponent } from './components/pokemon/evolution-chain/ev
     PokemonTypeComponent,
     HeightPipe,
     WeightPipe,
-    EvolutionChainComponent
+    EvolutionChainComponent,
   ],
   imports: [
     BrowserModule,
