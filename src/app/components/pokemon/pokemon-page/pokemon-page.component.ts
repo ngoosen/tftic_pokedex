@@ -12,7 +12,6 @@ import { PokemonDataService } from '../../../tools/services/pokemon-data.service
 })
 export class PokemonPageComponent {
   pokemon!: Pokemon;
-  pokemonImgSrc: string = "";
 
   pageIsLoading: boolean = true;
 
@@ -24,8 +23,6 @@ export class PokemonPageComponent {
     this._pokeService.getById(pokemonId).subscribe({
       next: (data) => {
         this.pokemon = data;
-        // console.log("🚀 ~ PokemonPageComponent ~ this._pokeService.getById ~ data:", data);
-        this.pokemonImgSrc = data.sprites.other['official-artwork'].front_default;
         this.pageIsLoading = false;
       },
       error: (e) => {
@@ -40,9 +37,6 @@ export class PokemonPageComponent {
 
   // TODO: add moves
   // https://pokeapi.co/api/v2/move/13/
-
-  // TODO: add evolution chain
-  // https://pokeapi.co/api/v2/evolution-chain/1
 
   // TODO: add french version?
   // https://pokeapi.co/api/v2/pokemon-species/1
