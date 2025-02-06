@@ -20,7 +20,7 @@
       </section>
       <section>
         <article>
-          <h1>{{ pokemon.name | titlecase }}</h1>
+          <h1>{{ pokemonFrenchName | titlecase }}</h1>
           <ul class="types">
             @for (type of pokemon.types; track $index) {
               <app-pokemon-type [type]="type.type"></app-pokemon-type>
@@ -57,6 +57,10 @@
               </div>
             </li>
           </ul>
+
+          <div class="description">
+            <p>{{ pokemonDescription }}</p>
+          </div>
         </article>
 
       </section>

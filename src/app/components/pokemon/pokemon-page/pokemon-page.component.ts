@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Pokemon } from '../../../models/pokemon.model';
 import { PokemonDataService } from '../../../tools/services/pokemon-data.service';
+import { PokemonSpeciesService } from '../../../tools/services/pokemon-species.service';
 
 @Component({
   selector: 'app-pokemon-page',
@@ -13,9 +14,16 @@ import { PokemonDataService } from '../../../tools/services/pokemon-data.service
 export class PokemonPageComponent {
   pokemon!: Pokemon;
 
+  pokemonFrenchName: string = "";
+  pokemonDescription: string = "";
+
   pageIsLoading: boolean = true;
 
-  constructor (private _activatedRoute: ActivatedRoute, private _pokeService: PokemonDataService) { }
+  constructor (
+    private _activatedRoute: ActivatedRoute,
+    private _pokeService: PokemonDataService,
+    private _pokeSpeciesService: PokemonSpeciesService,
+  ) { }
 
   ngOnInit() {
     const pokemonId = this._activatedRoute.snapshot.params["id"];
@@ -28,6 +36,25 @@ export class PokemonPageComponent {
       error: (e) => {
         console.log(e);
         this.pageIsLoading = false;
+      },
+    });
+
+    this._pokeSpeciesService.getSpecies(pokemonId).subscribe({
+      next: (data) => {
+        const frFlavorTextEntry = data.flavor_text_entries.find(entry => entry.language.name === "fr" && entry.version.name === "omega-ruby");
+
+        if (frFlavorTextEntry) {
+          this.pokemonDescription = frFlavorTextEntry.flavor_text;
+        }
+
+        const frNameEntry = data.names.find(name => name.language.name === "fr");
+
+        if (frNameEntry) {
+          this.pokemonFrenchName = frNameEntry.name;
+        }
+      },
+      error: (e) => {
+        console.log(e);
       },
     });
   }
