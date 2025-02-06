@@ -20,6 +20,8 @@ import { PokeballComponent } from './components/shared/ui/pokeball/pokeball.comp
 import { HeightPipe } from './tools/pipes/height.pipe';
 import { WeightPipe } from './tools/pipes/weight.pipe';
 import { PopupComponent } from './components/shared/ui/popup/popup.component';
+import { PokemonAbilitiesComponent } from './components/pokemon/pokemon-abilities/pokemon-abilities.component';
+import { AbilityComponent } from './components/pokemon/pokemon-abilities/ability/ability.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,8 @@ import { PopupComponent } from './components/shared/ui/popup/popup.component';
     WeightPipe,
     EvolutionChainComponent,
     PopupComponent,
+    PokemonAbilitiesComponent,
+    AbilityComponent,
   ],
   imports: [
     BrowserModule,

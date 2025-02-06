@@ -15,15 +15,15 @@ export class PokemonListItemComponent {
   @Input() reloadPage: boolean = false;
   @Input() active: boolean = false;
 
-  pokemonImg!: string;
+  pokemonImg: string = "";
 
-  constructor(private _router: Router, private _pokeService: PokemonDataService) { }
+  constructor(
+    private _router: Router,
+    private _pokeService: PokemonDataService,
+  ) { }
 
   ngOnChanges() {
-    this.pokemonImg = "";
-    const pokemonId = this.pokemon.url.split("/").slice(-2)[0];
-
-    this._pokeService.getById(parseInt(pokemonId)).subscribe({
+    this._pokeService.getByName(this.pokemon.name).subscribe({
       next: (data) => {
         this.pokemonImg = data.sprites.other['official-artwork'].front_default
       },

@@ -146,28 +146,4 @@ main {
       align-items: center;
     }
   }
-
-  .abilities_moves_section {
-    display: flex;
-    justify-content: space-between;
-    gap: 50px;
-
-    margin-bottom: 30px;
-
-    .abilities,
-    .moves {
-      flex: 1;
-
-      ul {
-        height: 150px;
-
-        border: 10px solid #d8d8d8;
-        border-radius: 5px;
-
-        background-color: #d8d8d8;
-
-        overflow-y: auto;
-      }
-    }
-  }
 }
