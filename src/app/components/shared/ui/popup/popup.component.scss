@@ -27,8 +27,7 @@
   position: relative;
   z-index: 1;
 
-  width: 50%;
-  // height: 70%;
+  width: minmax(50%, fit-content);
 
   padding: 20px 30px;
 
