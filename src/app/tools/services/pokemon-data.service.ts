@@ -12,12 +12,6 @@ export class PokemonDataService {
 
   constructor(private _httpClient: HttpClient) { }
 
-  private _getNonPaginatedResults(totalPokemon: number): Observable<PaginatedPokemonData> {
-    const url = `${this._basePokemonUrl}?offset=0&limit=${totalPokemon}`;
-    console.log("🚀 ~ PokemonDataService ~ _getNonPaginatedResults ~ url:", url);
-    return this._httpClient.get<PaginatedPokemonData>(url)
-  }
-
   private _getPokemonCount(): number | void {
     this._httpClient
       .get<PaginatedPokemonData>(this._basePokemonUrl)
