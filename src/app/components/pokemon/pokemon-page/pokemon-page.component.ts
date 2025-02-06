@@ -56,13 +56,4 @@ export class PokemonPageComponent {
       },
     });
   }
-
-  // TODO: add abilities
-  // https://pokeapi.co/api/v2/pokemon/1
-
-  // TODO: add moves
-  // https://pokeapi.co/api/v2/move/13/
-
-  // TODO: add french version?
-  // https://pokeapi.co/api/v2/pokemon-species/1
 }
