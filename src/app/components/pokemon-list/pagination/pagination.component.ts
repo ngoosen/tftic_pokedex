@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { PaginatedPokemonData } from '../../../models/paginatedPokemonData.model';
 import { PokemonUrl } from '../../../models/pokemonUrl.model';
 import { PaginatedPokemonDataService } from '../../../tools/services/paginated-pokemon-data.service';
@@ -20,7 +21,10 @@ export class PaginationComponent {
   currentPage: number = 1;
   currentPages: number[] = [1, 2, 3, 4, 5];
 
-  constructor(private _pokeService: PaginatedPokemonDataService) {
+  constructor(
+    private _pokeService: PaginatedPokemonDataService,
+    private _activatedRoute: ActivatedRoute
+  ) {
     this.onChangePage = new EventEmitter<PokemonUrl[]>();
   }
 
@@ -49,13 +53,29 @@ export class PaginationComponent {
   }
 
   ngOnInit() {
+    const pageNbFromParams = this._activatedRoute.snapshot.queryParams["page"];
+
     this._pokeService.getAll().subscribe({
       next: (data) => {
         this.totalPages = Math.ceil(data.count / this._pokeService.LIMIT);
-        this._updateMetaData(data);
+
+        if (!pageNbFromParams) {
+          this._updateMetaData(data);
+        }
       },
       error: (error) => console.log(error),
     });
+
+    if (pageNbFromParams) {
+      this.currentPage = parseInt(pageNbFromParams);
+
+      this._pokeService.getAllByPage(pageNbFromParams).subscribe({
+        next: (d) => {
+          this._updateMetaData(d);
+        },
+        error: (error) => console.log(error),
+      });
+    }
   }
 
   getNextPage() {
