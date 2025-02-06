@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PaginatedPokemonData } from '../../../models/paginatedPokemonData.model';
 import { PokemonUrl } from '../../../models/pokemonUrl.model';
 import { PaginatedPokemonDataService } from '../../../tools/services/paginated-pokemon-data.service';
@@ -23,7 +23,8 @@ export class PaginationComponent {
 
   constructor(
     private _pokeService: PaginatedPokemonDataService,
-    private _activatedRoute: ActivatedRoute
+    private _activatedRoute: ActivatedRoute,
+    private _router: Router,
   ) {
     this.onChangePage = new EventEmitter<PokemonUrl[]>();
   }
@@ -50,6 +51,16 @@ export class PaginationComponent {
     }
 
     this.currentPages = newPages;
+
+    if (this.currentPage > 0) {
+      this._router.navigate([""], {
+        queryParams: { "page" : this.currentPage, },
+      });
+    } else {
+      this._router.navigate([""], {
+        queryParams: { "page" : 1, },
+      });
+    }
   }
 
   ngOnInit() {
