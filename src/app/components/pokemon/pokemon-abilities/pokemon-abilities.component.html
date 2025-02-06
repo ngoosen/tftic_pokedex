@@ -12,7 +12,7 @@
     <h2>Capacités</h2>
     <ul>
       @for (move of pokemon.moves; track $index) {
-        <li>{{ move.move.name.replace("-", " ") | titlecase }}</li>
+        <app-move [move]="move.move"></app-move>
       }
     </ul>
   </article>

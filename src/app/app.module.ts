@@ -22,6 +22,7 @@ import { WeightPipe } from './tools/pipes/weight.pipe';
 import { PopupComponent } from './components/shared/ui/popup/popup.component';
 import { PokemonAbilitiesComponent } from './components/pokemon/pokemon-abilities/pokemon-abilities.component';
 import { AbilityComponent } from './components/pokemon/pokemon-abilities/ability/ability.component';
+import { MoveComponent } from './components/pokemon/pokemon-abilities/move/move.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { AbilityComponent } from './components/pokemon/pokemon-abilities/ability
     PopupComponent,
     PokemonAbilitiesComponent,
     AbilityComponent,
+    MoveComponent,
   ],
   imports: [
     BrowserModule,

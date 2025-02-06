@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Ability } from '../../models/ability.model';
+import { Move } from '../../models/move.model';
 import { PaginatedPokemonData } from '../../models/paginatedPokemonData.model';
 import { Pokemon } from '../../models/pokemon.model';
 import { PokemonSpecies } from '../../models/pokemonSpecies.model';
@@ -49,7 +50,7 @@ export class PokemonDataService {
     return this._httpClient.get<Ability>(abilityUrl);
   }
 
-  getMove(moveUrl: string) {
-    //
+  getMove(moveUrl: string): Observable<Move> {
+    return this._httpClient.get<Move>(moveUrl);
   }
 }
