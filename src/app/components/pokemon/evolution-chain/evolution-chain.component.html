@@ -3,15 +3,13 @@
 @if (evolutionChain.length > 0) {
   <ul class="one_evolution_chain">
     @for (evolution of evolutionChain; track $index) {
-      <app-pokemon-list-item
-      [pokemon]="evolution"
-      [reloadPage]="true"
-      [active]="evolution.name === pokemonName"
-      ></app-pokemon-list-item>
+      <app-evolution-condition [evolutionDetails]="evolution.evolution_details"></app-evolution-condition>
 
-      @if ($index !== evolutionChain.length - 1) {
-        <li class="arrow">➡</li>
-      }
+      <app-pokemon-list-item
+      [pokemon]="evolution.species"
+      [reloadPage]="true"
+      [active]="evolution.species.name === pokemonName"
+      ></app-pokemon-list-item>
     }
   </ul>
 }
@@ -22,15 +20,13 @@
       <li>
         <ul>
           @for (evolution of cell; track $index) {
-            <app-pokemon-list-item
-            [pokemon]="evolution"
-            [reloadPage]="true"
-            [active]="evolution.name === pokemonName"
-            ></app-pokemon-list-item>
+            <app-evolution-condition [evolutionDetails]="evolution.evolution_details"></app-evolution-condition>
 
-            @if ($index !== cell.length - 1) {
-              <li class="arrow">➡</li>
-            }
+            <app-pokemon-list-item
+            [pokemon]="evolution.species"
+            [reloadPage]="true"
+            [active]="evolution.species.name === pokemonName"
+            ></app-pokemon-list-item>
           }
         </ul>
       </li>

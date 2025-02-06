@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ChainLink } from '../../../models/evolutionChain.model';
 import { PokemonSpecies } from '../../../models/pokemonSpecies.model';
-import { PokemonUrl } from '../../../models/pokemonUrl.model';
 import { EvolutionService } from '../../../tools/services/evolution.service';
 
 @Component({
@@ -15,64 +14,58 @@ export class EvolutionChainComponent {
   @Input() pokemonName: string = "";
 
   species!: PokemonSpecies;
-  evolutionChain: PokemonUrl[] = [];
 
-  evolutions: PokemonUrl[][] = [];
+  evolutionChain: ChainLink[] = [];
+  evolutions: ChainLink[][] = [];
 
   constructor (private _evolutionService: EvolutionService) { }
 
   getEvolutionChain(url: string) {
     this._evolutionService.getEvolutionChain(url).subscribe({
       next: (data) => {
-        const firstPokemon = data.chain.species;
+        const firstPokemon = data.chain;
 
         // Evolution chain's second form(s)
         const middleForms = data.chain.evolves_to;
-        const middlePokemons: PokemonUrl[] = middleForms.map(form => form.species);
 
         // Evolution chain's optional third and final form(s)
-        const finalForms: ChainLink[][] = [];
-        middleForms.map(form => finalForms.push(form.evolves_to));
-
-        const finalPokemons: PokemonUrl[] = []
-
-        finalForms.forEach(cell => {
-          cell.forEach(form => finalPokemons.push(form.species));
-        })
-
+        const finalForms: ChainLink[] = [];
+        middleForms.map((form) => {
+          form.evolves_to.map(f => finalForms.push(f));
+        });
 
         // Dispatching evolutions
-        if (middlePokemons.length === 1 && (finalPokemons.length === 0 || finalPokemons.length === 1)) {
+        if (middleForms.length === 1 && (finalForms.length === 0 || finalForms.length === 1)) {
           // Normal chain -> unique list
-          this.evolutionChain = [firstPokemon, middlePokemons[0]];
+          this.evolutionChain = [firstPokemon, middleForms[0]];
 
-          if (finalPokemons.length === 1) {
-            this.evolutionChain.push(finalPokemons[0]);
+          if (finalForms.length === 1) {
+            this.evolutionChain.push(finalForms[0]);
           }
-        } else if (middlePokemons.length === 1 && finalPokemons.length > 1) {
+        } else if (middleForms.length === 1 && finalForms.length > 1) {
           // Branch at middle form -> multiple lists
-          finalPokemons.forEach(pokemon => {
-            this.evolutions.push([firstPokemon, middlePokemons[0], pokemon]);
+          finalForms.forEach(pokemon => {
+            this.evolutions.push([firstPokemon, middleForms[0], pokemon]);
           });
-        } else if (middlePokemons.length > 1 && finalPokemons.length === 1) {
+        } else if (middleForms.length > 1 && finalForms.length === 1) {
           // Branch at first pokemon, but only one middle form evolves again (literally just one pokemon called Applin)
 
-          middlePokemons.forEach((pokemon, index) => {
+          middleForms.forEach((pokemon) => {
             const cell = [firstPokemon, pokemon];
 
-            if (finalForms[index].length > 0) {
-              cell.push(finalForms[index][0].species);
+            if (pokemon.evolves_to.length > 0) {
+              cell.push(pokemon.evolves_to[0]);
             }
 
             this.evolutions.push(cell);
           });
         } else {
           // Branch at first pokemon -> multiple lists
-          middlePokemons.forEach((pokemon, index) => {
+          middleForms.forEach((pokemon, index) => {
             const cell = [firstPokemon, pokemon];
 
-            if (finalPokemons[index]) {
-              cell.push(finalPokemons[index]);
+            if (finalForms[index]) {
+              cell.push(finalForms[index]);
             }
 
             this.evolutions.push(cell);

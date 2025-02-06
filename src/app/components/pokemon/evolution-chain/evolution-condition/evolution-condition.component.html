@@ -1,0 +1,94 @@
+@if (evolutionDetails.length > 0) {
+  <li>
+    <span (mouseenter)="openTooltip()" (mouseleave)="closeTooltip()">
+      ➡
+
+      @if (showTooltip) {
+        <div class="tooltip_container">
+          <div class="tooltip">
+            @for (condition of evolutionDetails; track $index) {
+              @if (condition.min_level) {
+                <p>Niveau {{ condition.min_level }}+</p>
+              }
+
+              @if (condition.gender !== null) {
+                <p>Doit être un{{ condition.gender === 1 ? "e femelle" : " mâle" }}</p>
+              }
+
+              @if (condition.held_item) {
+                <p>Doit tenir "{{ condition.held_item.name.replace("-", " ") | titlecase }}"</p>
+              }
+
+              @if (condition.item) {
+                <p>Requiert "{{ condition.item.name.replace("-", " ") | titlecase }}"</p>
+              }
+
+              @if (condition.know_move_type) {
+                <p>Doit connaître une capacité de type "{{ condition.know_move_type.name.replace("-", " ") | titlecase }}"</p>
+              }
+
+              @if (condition.known_move) {
+                <p>Doit connaître "{{ condition.known_move.name.replace("-", " ") | titlecase }}"</p>
+              }
+
+              @if (condition.location) {
+                <p>Doit se trouver à "{{ condition.location.name.replace("-", " ") | titlecase }}"</p>
+              }
+
+              @if (condition.min_affection) {
+                <p>Affection {{ condition.min_affection }}+</p>
+              }
+
+              @if (condition.min_beauty) {
+                <p>Beauté {{ condition.min_beauty }}+</p>
+              }
+
+              @if (condition.min_happiness) {
+                <p>Bonheur {{ condition.min_happiness }}+</p>
+              }
+
+              @if (condition.needs_overworld_rain) {
+                <p>Pluie requise dans l'overworld</p>
+              }
+
+              @if (condition.party_species) {
+                <p>"{{ condition.party_species.name.replace("-", " ") | titlecase }}"" doit faire partie de l'équipe</p>
+              }
+
+              @if (condition.party_type) {
+                <p>Un pokémon de type "{{ condition.party_type.name }}" doit faire partie de l'équipe</p>
+              }
+
+              @if (condition.relative_physical_stats !== null) {
+                @if (condition.relative_physical_stats > 0) {
+                  <p>Attaque doit être supérieure à Défense</p>
+                }
+
+                @if (condition.relative_physical_stats === 0) {
+                  <p>Attaque doit être égale à Défense</p>
+                }
+
+                @if (condition.relative_physical_stats < 0) {
+                  <p>Attaque doit être inférieure à Défense</p>
+                }
+              }
+
+              @if (condition.time_of_day && condition.time_of_day !== "") {
+                <p>Évolution possible uniquement durant {{ condition.time_of_day.toLowerCase() === "night" ? "la nuit" : "le jour" }}</p>
+              }
+
+              @if (condition.trade_species) {
+                <p>Doit être échangé contre "{{ condition.trade_species.name }}"</p>
+              }
+
+              @if (condition.turn_upside_down) {
+                <p>La 3DS doit être à l'envers</p>
+              }
+            }
+          </div>
+          <div class="pointer"></div>
+        </div>
+      }
+    </span>
+  </li>
+}

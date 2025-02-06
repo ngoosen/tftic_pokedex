@@ -23,6 +23,7 @@ import { PopupComponent } from './components/shared/ui/popup/popup.component';
 import { PokemonAbilitiesComponent } from './components/pokemon/pokemon-abilities/pokemon-abilities.component';
 import { AbilityComponent } from './components/pokemon/pokemon-abilities/ability/ability.component';
 import { MoveComponent } from './components/pokemon/pokemon-abilities/move/move.component';
+import { EvolutionConditionComponent } from './components/pokemon/evolution-chain/evolution-condition/evolution-condition.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { MoveComponent } from './components/pokemon/pokemon-abilities/move/move.
     PokemonAbilitiesComponent,
     AbilityComponent,
     MoveComponent,
+    EvolutionConditionComponent,
   ],
   imports: [
     BrowserModule,
