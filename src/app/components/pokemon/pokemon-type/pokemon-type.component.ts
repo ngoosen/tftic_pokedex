@@ -12,6 +12,7 @@ import { TypesService } from '../../../tools/services/types.service';
 })
 export class PokemonTypeComponent {
   @Input() type!: PokemonUrl;
+  @Input() disablePopups: boolean = false;
 
   typeDetails!: PokemonType;
   typeFrenchName: string = "";
@@ -39,14 +40,20 @@ export class PokemonTypeComponent {
   }
 
   toggleToolbox(value: boolean) {
+    if (this.disablePopups) return;
+
     this.showToolbox = value;
   }
 
   openPopup() {
+    if (this.disablePopups) return;
+
     this.showPopup = true;
   }
 
   closePopup() {
+    if (this.disablePopups) return;
+
     this.showPopup = false;
   }
 }

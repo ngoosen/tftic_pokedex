@@ -70,7 +70,7 @@
             }
 
             @for (item of typeDetails.damage_relations.double_damage_to; track $index) {
-              <li class="main" [ngClass]="item.name">{{ item.name | uppercase }}</li>
+              <app-pokemon-type [type]="item" [disablePopups]="true"></app-pokemon-type>
             }
           </ul>
         </article>
@@ -84,7 +84,7 @@
             }
 
             @for (item of typeDetails.damage_relations.half_damage_to; track $index) {
-              <li class="main" [ngClass]="item.name">{{ item.name | uppercase }}</li>
+              <app-pokemon-type [type]="item" [disablePopups]="true"></app-pokemon-type>
             }
           </ul>
         </article>
@@ -98,7 +98,7 @@
             }
 
             @for (item of typeDetails.damage_relations.double_damage_from; track $index) {
-              <li class="main" [ngClass]="item.name">{{ item.name | uppercase }}</li>
+              <app-pokemon-type [type]="item" [disablePopups]="true"></app-pokemon-type>
             }
           </ul>
         </article>
@@ -112,7 +112,7 @@
             }
 
             @for (item of typeDetails.damage_relations.half_damage_from; track $index) {
-              <li class="main" [ngClass]="item.name">{{ item.name | uppercase }}</li>
+              <app-pokemon-type [type]="item" [disablePopups]="true"></app-pokemon-type>
             }
           </ul>
         </article>
@@ -126,7 +126,7 @@
             }
 
             @for (item of typeDetails.damage_relations.no_damage_to; track $index) {
-              <li class="main" [ngClass]="item.name">{{ item.name | uppercase }}</li>
+              <app-pokemon-type [type]="item" [disablePopups]="true"></app-pokemon-type>
             }
           </ul>
         </article>
@@ -140,7 +140,7 @@
             }
 
             @for (item of typeDetails.damage_relations.no_damage_from; track $index) {
-              <li class="main" [ngClass]="item.name">{{ item.name | uppercase }}</li>
+              <app-pokemon-type [type]="item" [disablePopups]="true"></app-pokemon-type>
             }
           </ul>
         </article>
