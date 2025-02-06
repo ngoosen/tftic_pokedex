@@ -1,59 +1,48 @@
 # Pokedex
 
+This project was created as a way to showcase what I learned during my training. The goal is to make a relatively straightforward Pokedex using the [PokeAPI](https://pokeapi.co/docs/v2).
+
+## Features
+
+### Home page
+
+The home page is list of all Pokemons.
+
+It includes:
+
+- A paginated list
+- A dynamical search field
+- Setting and getting the page number to and from the URL's params
+
+### Details page
+
+Clicking on a Pokemon from the home page's list redirect to a page with the Pokemon's overview.
+
+Features include:
+
+- The french version of all displayed infos
+- The Pokemon's basic informations, such as its name, its base experience, its height and weight and a flavor text
+- The Pokemon's type with:
+  - A hoverable tooltip including a quick view of the types strength and weaknesses
+  - A clickable popup to view the type's strength and weakness in more details
+- A list of the Pokemon's abilities
+- A list of the Pokemon's moves
+- The Pokemon's evolution chain with
+  - Its position in the chain
+  - A clickable link to the other Pokemons in the evolution chain
+  - A hoverable tooltip including the different requirements for the Pokemon to evolve
+
+
+## Personal evaluation
+
+I'm pretty satisfied with what I was able to achieve in one week.
+
+Some missing features could be:
+
+- The french version in the home page's list with adapted dynamic searching
+- More in depth analysis of the Pokemon's abilities and moves on the details pages
+- Some bug fixes
+
+<hr>
+
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.3.
-
-## Development server
-
-To start a local development server, run:
-
-```bash
-ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
