@@ -52,19 +52,21 @@ export class PaginationComponent {
 
     this.currentPages = newPages;
 
-    if (this.currentPage > 0) {
+    if (this.currentPage > 1) {
       this._router.navigate([""], {
         queryParams: { "page" : this.currentPage, },
       });
     } else {
-      this._router.navigate([""], {
-        queryParams: { "page" : 1, },
-      });
+      this._router.navigate([""]);
     }
   }
 
   ngOnInit() {
-    const pageNbFromParams = this._activatedRoute.snapshot.queryParams["page"];
+    let pageNbFromParams: string | undefined = this._activatedRoute.snapshot.queryParams["page"];
+
+    if (pageNbFromParams && parseInt(pageNbFromParams) <= 0) {
+      pageNbFromParams = "1";
+    }
 
     this._pokeService.getAll().subscribe({
       next: (data) => {
@@ -80,7 +82,7 @@ export class PaginationComponent {
     if (pageNbFromParams) {
       this.currentPage = parseInt(pageNbFromParams);
 
-      this._pokeService.getAllByPage(pageNbFromParams).subscribe({
+      this._pokeService.getAllByPage(this.currentPage).subscribe({
         next: (d) => {
           this._updateMetaData(d);
         },
