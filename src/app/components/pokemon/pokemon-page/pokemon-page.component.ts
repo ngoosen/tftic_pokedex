@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Pokemon } from '../../../models/pokemon.model';
 import { PokemonDataService } from '../../../tools/services/pokemon-data.service';
-import { PokemonSpeciesService } from '../../../tools/services/pokemon-species.service';
 
 @Component({
   selector: 'app-pokemon-page',
@@ -22,7 +21,6 @@ export class PokemonPageComponent {
   constructor (
     private _activatedRoute: ActivatedRoute,
     private _pokeService: PokemonDataService,
-    private _pokeSpeciesService: PokemonSpeciesService,
   ) { }
 
   ngOnInit() {
@@ -39,7 +37,7 @@ export class PokemonPageComponent {
       },
     });
 
-    this._pokeSpeciesService.getSpecies(pokemonId).subscribe({
+    this._pokeService.getSpecies(pokemonId).subscribe({
       next: (data) => {
         const frFlavorTextEntry = data.flavor_text_entries.find(entry => entry.language.name === "fr" && entry.version.name === "omega-ruby");
 

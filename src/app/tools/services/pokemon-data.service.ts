@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { PaginatedPokemonData } from '../../models/paginatedPokemonData.model';
 import { Pokemon } from '../../models/pokemon.model';
+import { PokemonSpecies } from '../../models/pokemonSpecies.model';
 
 @Injectable({
   providedIn: 'root'
@@ -37,5 +38,9 @@ export class PokemonDataService {
 
   getByName(name: string): Observable<Pokemon> {
     return this._httpClient.get<Pokemon>(`${this._basePokemonUrl}/${name}`)
+  }
+
+  getSpecies(identifier: number |string): Observable<PokemonSpecies> {
+    return this._httpClient.get<PokemonSpecies>(`https://pokeapi.co/api/v2/pokemon-species/${identifier}`);
   }
 }
